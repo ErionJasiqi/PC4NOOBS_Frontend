@@ -12,6 +12,7 @@
 
          <main>
             <!--Sidebar-->
+            <!--Temp so that i can fix wrong commit-->
             <aside>
                 <ul>
                     <li><RouterLink to="/guides/main-components">Main Components</RouterLink></li>
