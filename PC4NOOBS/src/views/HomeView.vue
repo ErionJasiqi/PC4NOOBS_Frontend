@@ -48,7 +48,7 @@
     <footer>
       <section>
         <p>PC4Noobs.info@gmail.com</p>
-        <p>Street: Erlenweg 70</p>
+        <p>Street: Erlenweg 71</p>
         <p>City: Bennau 8836</p>
         <p>Phone: 055 360 62 63</p>
         <p>Country: Switzerland</p>
