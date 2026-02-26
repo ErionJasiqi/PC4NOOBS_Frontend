@@ -3,7 +3,35 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <RouterView />
+  <div>
+    <header>
+      <nav>
+        <RouterLink to="/guides/main-components">Guides</RouterLink>
+        <RouterLink to="/questionnaire">Begin Questionnaire</RouterLink>
+        <RouterLink to="/simulator">Simulator</RouterLink>
+        <RouterLink to="/account">Account</RouterLink>
+      </nav>
+    </header>
+
+    <RouterView />
+
+    <footer>
+      <section>
+        <p>PC4Noobs.info@gmail.com</p>
+        <p>Street: Erlenweg 70</p>
+        <p>City: Bennau 8836</p>
+        <p>Phone: 041 360 62 63</p>
+        <p>Country: Switzerland</p>
+      </section>
+      <nav>
+        <ul>
+          <RouterLink to="/imprint">Imprint</RouterLink>
+          <RouterLink to="/terms">Terms</RouterLink>
+          <RouterLink to="/privacy">Privacy</RouterLink>
+        </ul>
+      </nav>
+    </footer>
+  </div>
 </template>
 
 <style scoped>

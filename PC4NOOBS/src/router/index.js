@@ -20,10 +20,18 @@ import BuildRAMMotherboardView from '@/views/guides/BuildRAMMotherboardView.vue'
 import BuildMemoryMotherboardView from '@/views/guides/BuildMemoryMotherboardView.vue';
 import BuildCaseMotherboardView from '@/views/guides/BuildCaseMotherboardView.vue';
 
+import ImprintView from '@/views/legal/ImprintView.vue';
+import TermsView from '@/views/legal/TermsView.vue';
+import PrivacyView from '@/views/legal/PrivacyView.vue';
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: "/", name: "home", component: HomeView },
+
+    { path: "/imprint", name: "imprint", component: ImprintView },
+    { path: "/terms", name: "terms", component: TermsView },
+    { path: "/privacy", name: "privacy", component: PrivacyView },
 
     { path: "/guides", component: GuidesLayout, children: [
         { path: "", redirect: "/guides/main-components" },

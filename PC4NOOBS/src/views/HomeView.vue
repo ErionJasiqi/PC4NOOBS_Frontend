@@ -56,15 +56,9 @@
 
       <nav>
         <ul>
-          <li>
-            <button type="button" @click="$router.push('/imprint')">Imprint</button>
-          </li>
-          <li>
-            <button type="button" @click="$router.push('/terms')">Terms</button>
-          </li>
-          <li>
-            <button type="button" @click="$router.push('/privacy')">Privacy</button>
-          </li>
+          <li><Routerlink to="/imprint">Imprint</Routerlink></li>
+          <li><Routerlink to="/terms">Terms</Routerlink></li>
+          <li><Routerlink to="/privacy">Privacy</Routerlink></li>
         </ul>
       </nav>
     </footer>
