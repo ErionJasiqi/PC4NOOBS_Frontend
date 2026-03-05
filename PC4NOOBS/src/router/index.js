@@ -26,6 +26,9 @@ import PrivacyView from '@/views/legal/PrivacyView.vue';
 
 import AccountView from '@/views/AccountView.vue';
 
+import QuestionnaireView from '@/views/QuestionnaireView.vue';
+import GuidedQuestionnaire from '@/views/questionnaire/GuidedQuestionnaire.vue';
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -36,6 +39,9 @@ const router = createRouter({
     { path: "/imprint", name: "imprint", component: ImprintView },
     { path: "/terms", name: "terms", component: TermsView },
     { path: "/privacy", name: "privacy", component: PrivacyView },
+
+    { path: "/questionnaire", name: "questionnaire", component: QuestionnaireView },
+    { path: "/questionnaire/guided", name: "guided-questionnaire", component: GuidedQuestionnaire },
 
     { path: "/guides", component: GuidesLayout, children: [
         { path: "", redirect: "/guides/main-components" },
