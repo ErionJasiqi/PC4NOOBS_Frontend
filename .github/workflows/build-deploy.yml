@@ -50,6 +50,7 @@ jobs:
     - name: 'Deploy to Plesk'
       id: deploy-to-webapp
       run:
-        scp -r -p22 $GITHUB_WORKSPACE/node-app ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/httpdocs
+        ls
+        scp -r -p22 ./node-app ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/httpdocs
         
 
