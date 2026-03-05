@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <div>
     <header>
       <RouterLink to="/" class="logo-link">
-        <img src="/src/assets/logo.png" alt="PC4NOOBS Logo" />
+        <img src="/src/assets/Logo.png" alt="PC4NOOBS Logo" />
       </RouterLink>
       <nav>
         <RouterLink to="/guides/main-components">Guides</RouterLink>
