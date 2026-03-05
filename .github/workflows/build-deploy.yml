@@ -50,7 +50,6 @@ jobs:
     - name: 'Deploy to Plesk'
       id: deploy-to-webapp
       run:
-        ls
-        scp -r -p22 ./node-app ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/httpdocs
+        scp -r -p22 ./node-app.zip ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/httpdocs
         
 
