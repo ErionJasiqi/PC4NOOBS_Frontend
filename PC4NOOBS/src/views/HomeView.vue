@@ -20,5 +20,23 @@
         </div>
       </section>
     </main>
+
+    <footer>
+      <section>
+        <p>PC4Noobs.info@gmail.com</p>
+        <p>Street: Erlenweg 71</p>
+        <p>City: Bennau 8836</p>
+        <p>Phone: 055 360 62 63</p>
+        <p>Country: Switzerland</p>
+      </section>
+
+      <nav>
+        <ul>
+          <li><Routerlink to="/imprint">Imprint</Routerlink></li>
+          <li><Routerlink to="/terms">Terms</Routerlink></li>
+          <li><Routerlink to="/privacy">Privacy</Routerlink></li>
+        </ul>
+      </nav>
+    </footer>
   </div>
 </template>

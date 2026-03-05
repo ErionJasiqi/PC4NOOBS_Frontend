@@ -12,6 +12,10 @@ export default defineConfig({
     vueJsx(),
     vueDevTools(),
   ],
+  build:{
+    outDir: 'httpdocs',
+    emptyOutDir: true,
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
