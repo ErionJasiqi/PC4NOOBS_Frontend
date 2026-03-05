@@ -5,6 +5,9 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <div>
     <header>
+      <RouterLink to="/" class="logo-link">
+        <img src="/src/assets/logo.png" alt="PC4NOOBS Logo" />
+      </RouterLink>
       <nav>
         <RouterLink to="/guides/main-components">Guides</RouterLink>
         <RouterLink to="/questionnaire">Begin Questionnaire</RouterLink>
@@ -17,7 +20,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
     <footer>
       <section>
-        <p>PC4Noobs.info@gmail.com</p>
+        <a href="mailto:PC4Noobs.info@gmail.com">PC4Noobs.info@gmail.com</a>
         <p>Street: Erlenweg 70</p>
         <p>City: Bennau 8836</p>
         <p>Phone: 041 360 62 63</p>
@@ -25,9 +28,9 @@ import { RouterLink, RouterView } from 'vue-router'
       </section>
       <nav>
         <ul>
-          <RouterLink to="/imprint">Imprint</RouterLink>
-          <RouterLink to="/terms">Terms</RouterLink>
-          <RouterLink to="/privacy">Privacy</RouterLink>
+          <li><RouterLink to="/imprint">Imprint</RouterLink></li>
+          <li><RouterLink to="/terms">Terms</RouterLink></li>
+          <li><RouterLink to="/privacy">Privacy</RouterLink></li>
         </ul>
       </nav>
     </footer>
