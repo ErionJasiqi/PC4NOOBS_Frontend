@@ -31,7 +31,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: node-app
-        path: .
+        path: ./httpdocs
 
   deploy:
     permissions:
@@ -50,6 +50,6 @@ jobs:
     - name: 'Deploy to Plesk'
       id: deploy-to-webapp
       run:
-        scp -r -p22 $GITHUB_WORKSPACE/node-app ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/httpdocs
+        scp -r -p22 $GITHUB_WORKSPACE/httpdocs ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/httpdocs
         
 
