@@ -1,3 +1,5 @@
+name: Build and Deploy
+
 on:
   push:
     branches: ["main"]
@@ -38,8 +40,6 @@ jobs:
     needs: build
     permissions:
       contents: none
-    environment:
-      name: Development
 
     steps:
       - name: Download artifact from build job
@@ -47,13 +47,6 @@ jobs:
         with:
           name: node-app
           path: ./node-app
-
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.PLESK_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.PLESK_IP }} >> ~/.ssh/known_hosts
 
       - name: Deploy to Plesk
         run: |
