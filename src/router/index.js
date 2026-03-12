@@ -30,6 +30,7 @@ import QuestionnaireView from '@/views/QuestionnaireView.vue';
 import GuidedQuestionnaire from '@/views/questionnaire/GuidedQuestionnaire.vue';
 
 import SimulatorView from '@/views/SimulatorView.vue';
+import PaymentView from '@/views/PaymentView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,6 +47,7 @@ const router = createRouter({
     { path: "/questionnaire/guided", name: "guided-questionnaire", component: GuidedQuestionnaire },
 
     { path: "/simulator", name: "simulator", component: SimulatorView },
+    { path: '/payment', name: 'payment', component: PaymentView },
 
     { path: "/guides", component: GuidesLayout, children: [
         { path: "", redirect: "/guides/main-components" },
