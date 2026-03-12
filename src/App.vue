@@ -5,15 +5,20 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <div>
     <header>
-      <RouterLink to="/" class="logo-link">
-        <img src="/src/assets/Logo.png" alt="PC4NOOBS Logo" />
+      <div class="header-left">
+        <RouterLink to="/" class="logo-link">
+          <img src="/src/assets/Logo.png" alt="PC4NOOBS Logo" />
+        </RouterLink>
+        <nav>
+          <RouterLink to="/guides/main-components">Guides</RouterLink>
+          <RouterLink to="/questionnaire">Begin Questionnaire</RouterLink>
+          <RouterLink to="/simulator">Simulator</RouterLink>
+        </nav>
+      </div>
+
+      <RouterLink to="/account" class="account-link">
+        <img src="/src/assets/avatar.png" alt="Account" />
       </RouterLink>
-      <nav>
-        <RouterLink to="/guides/main-components">Guides</RouterLink>
-        <RouterLink to="/questionnaire">Begin Questionnaire</RouterLink>
-        <RouterLink to="/simulator">Simulator</RouterLink>
-      </nav>
-      <RouterLink to="/account" class="account-link"><img src="/src/assets/avatar.png" alt="Account" /></RouterLink>
     </header>
 
     <RouterView />
@@ -38,65 +43,14 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+header nav a{
+  text-decoration: none;
+  border: none;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
+header nav a.router-link-exact-active {
+  text-decoration: none;
   background-color: transparent;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>
