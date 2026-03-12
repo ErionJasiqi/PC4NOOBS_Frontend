@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  NODE_VERSION: '20.x'                # set this to the node version to use
+  NODE_VERSION: '22.13.1'                # set this to the node version to use
 
 permissions:
   contents: read
@@ -50,6 +50,6 @@ jobs:
     - name: 'Deploy to Plesk'
       id: deploy-to-webapp
       run:
-        scp -r -p22 $GITHUB_WORKSPACE/src ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/
+        scp -r -p22 $GITHUB_WORKSPACE/node-app/* ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/
         
 
