@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: npm
+          cache: 'npm'
 
       - name: npm install, build, and test
         run: |
@@ -48,6 +48,13 @@ jobs:
           name: node-app
           path: ./node-app
 
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PLESK_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.PLESK_IP }} >> ~/.ssh/known_hosts
+
       - name: Deploy to Plesk
         run: |
-          scp -r -p22 $GITHUB_WORKSPACE/node-app/* ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/
+          scp -r -P 22 ./node-app/* ${{ secrets.PLESK_USERNAME }}@${{ secrets.PLESK_IP }}:/var/www/vhosts/pc4noobs.ch/httpdocs/
