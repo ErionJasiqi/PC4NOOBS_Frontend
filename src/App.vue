@@ -12,8 +12,8 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/guides/main-components">Guides</RouterLink>
         <RouterLink to="/questionnaire">Begin Questionnaire</RouterLink>
         <RouterLink to="/simulator">Simulator</RouterLink>
-        <RouterLink to="/account">Account</RouterLink>
       </nav>
+      <RouterLink to="/account" class="account-link"><img src="/src/assets/avatar.png" alt="Account" /></RouterLink>
     </header>
 
     <RouterView />
