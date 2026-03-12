@@ -47,6 +47,9 @@ jobs:
       with:
         name: node-app
 
+    - name: 'Add Plesk server to known_hosts'
+      run: ssh-keyscan -H ${{ secrets.PLESK_IP }} >> ~/.ssh/known_hosts
+      
     - name: 'Deploy to Plesk'
       id: deploy-to-plesk
       run: |
