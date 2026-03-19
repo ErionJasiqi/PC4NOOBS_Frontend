@@ -38,8 +38,8 @@
 }
 
 .guides-sidebar {
-    width: 260px;
-    min-width: 260px;
+    width: 230px;
+    min-width: 230px;
     background-color: var(--color-bg-secondary);
     border-right: 1px solid var(--color-border);
     padding: 1.5rem 1rem;
