@@ -24,6 +24,8 @@ import ImprintView from '@/views/legal/ImprintView.vue';
 import TermsView from '@/views/legal/TermsView.vue';
 import PrivacyView from '@/views/legal/PrivacyView.vue';
 
+import LoginView from '@/views/LoginView.vue';
+import RegisterView from '@/views/RegisterView.vue';
 import AccountView from '@/views/AccountView.vue';
 
 import QuestionnaireView from '@/views/QuestionnaireView.vue';
@@ -35,44 +37,63 @@ import PaymentView from '@/views/PaymentView.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: "/", name: "home", component: HomeView },
+    { path: '/', name: 'home', component: HomeView },
 
-    { path: "/account", name: "account", component: AccountView },
+    { path: '/login', name: 'login', component: LoginView },
+    { path: '/register', name: 'register', component: RegisterView },
+    { path: '/account', name: 'account', component: AccountView },
 
-    { path: "/imprint", name: "imprint", component: ImprintView },
-    { path: "/terms", name: "terms", component: TermsView },
-    { path: "/privacy", name: "privacy", component: PrivacyView },
+    { path: '/imprint', name: 'imprint', component: ImprintView },
+    { path: '/terms', name: 'terms', component: TermsView },
+    { path: '/privacy', name: 'privacy', component: PrivacyView },
 
-    { path: "/questionnaire", name: "questionnaire", component: QuestionnaireView },
-    { path: "/questionnaire/guided", name: "guided-questionnaire", component: GuidedQuestionnaire },
+    { path: '/questionnaire', name: 'questionnaire', component: QuestionnaireView },
+    { path: '/questionnaire/guided', name: 'guided-questionnaire', component: GuidedQuestionnaire },
 
-    { path: "/simulator", name: "simulator", component: SimulatorView },
+    { path: '/simulator', name: 'simulator', component: SimulatorView },
     { path: '/payment', name: 'payment', component: PaymentView },
 
-    { path: "/guides", component: GuidesLayout, children: [
-        { path: "", redirect: "/guides/main-components" },
+    {
+      path: '/guides',
+      component: GuidesLayout,
+      children: [
+        { path: '', redirect: '/guides/main-components' },
 
-        { path: "main-components", name: "main-components", component: MainComponentsView },
-        { path: "case", name: "case", component: CaseView },
-        { path: "motherboard", name: "motherboard", component: MotherboardView },
-        { path: "cpu", name: "cpu", component: CPUView },
-        { path: "ram", name: "ram", component: RAMView },
+        { path: 'main-components', name: 'main-components', component: MainComponentsView },
+        { path: 'case', name: 'case', component: CaseView },
+        { path: 'motherboard', name: 'motherboard', component: MotherboardView },
+        { path: 'cpu', name: 'cpu', component: CPUView },
+        { path: 'ram', name: 'ram', component: RAMView },
+        { path: 'storage', name: 'storage', component: MemoryView },
+        { path: 'power-supply', name: 'power-supply', component: PowerSupplyView },
+        { path: 'graphics-card', name: 'graphics-card', component: GraphicsCardView },
+        { path: 'other', name: 'other', component: AdditionalView },
 
-        { path: "storage", name: "storage", component: MemoryView },
-
-        { path: "power-supply", name: "power-supply", component: PowerSupplyView },
-        { path: "graphics-card", name: "graphics-card", component: GraphicsCardView },
-        { path: "other", name: "other", component: AdditionalView },
-
-        { path: "build", name: "build", component: BuildView },
-        { path: "build-tools", name: "build-tools", component: BuildToolsView },
-        { path: "build-cpu-motherboard", name: "build-cpu-motherboard", component: BuildCPUMotherboardView },
-        { path: "build-ram-motherboard", name: "build-ram-motherboard", component: BuildRAMMotherboardView },
-        { path: "build-storage-motherboard", name: "build-storage-motherboard", component: BuildMemoryMotherboardView },
-        { path: "build-case-motherboard", name: "build-case-motherboard", component: BuildCaseMotherboardView },
+        { path: 'build', name: 'build', component: BuildView },
+        { path: 'build-tools', name: 'build-tools', component: BuildToolsView },
+        { path: 'build-cpu-motherboard', name: 'build-cpu-motherboard', component: BuildCPUMotherboardView },
+        { path: 'build-ram-motherboard', name: 'build-ram-motherboard', component: BuildRAMMotherboardView },
+        { path: 'build-storage-motherboard', name: 'build-storage-motherboard', component: BuildMemoryMotherboardView },
+        { path: 'build-case-motherboard', name: 'build-case-motherboard', component: BuildCaseMotherboardView },
       ],
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const loggedInUser = localStorage.getItem('loggedInUser');
+
+  if (to.path === '/account' && !loggedInUser) {
+    next('/login');
+    return;
+  }
+
+  if ((to.path === '/login' || to.path === '/register') && loggedInUser) {
+    next('/account');
+    return;
+  }
+
+  next();
 });
 
 export default router;
