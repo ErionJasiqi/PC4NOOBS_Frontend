@@ -1,10 +1,12 @@
+name: Build and Deploy
+
 on:
   push:
     branches: [ "main" ]
   workflow_dispatch:
 
 env:
-  NODE_VERSION: '20.x'                # set this to the node version to use
+  NODE_VERSION: '25.x'                # set this to the node version to use
 
 permissions:
   contents: read
@@ -13,10 +15,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
@@ -28,7 +30,7 @@ jobs:
         npm run test --if-present
 
     - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: node-app
         path: ./httpdocs
@@ -43,13 +45,17 @@ jobs:
 
     steps:
     - name: Download artifact from build job
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: node-app
 
+    - name: ' test'
+      run: ls
+      
     - name: 'Deploy to Plesk'
-      id: deploy-to-webapp
-      run:
-        scp -r -p22 $GITHUB_WORKSPACE/node-app/* ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/
+      id: deploy-to-plesk
+      run: |
+        touch "./pleaseworkdude.txt"
+        scp -r -p22 ./pleaseworkdude.txt ${{secrets.PLESK_USERNAME}}@${{secrets.PLESK_IP}}:/
         
 

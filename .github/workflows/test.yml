@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build and Deploy Yusuf
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  NODE_VERSION: '22.13.1'
+  NODE_VERSION: '20.x'
 
 permissions:
   contents: read
