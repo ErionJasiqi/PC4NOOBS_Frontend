@@ -1,6 +1,7 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { findUserByEmail } from '@/mock/users'
 
 const router = useRouter()
 
@@ -11,45 +12,23 @@ const errorMessage = ref('')
 function login() {
   errorMessage.value = ''
 
-  const savedUserRaw = localStorage.getItem('registeredUser')
+  const user = findUserByEmail(email.value.trim().toLowerCase())
 
-  if (!savedUserRaw) {
-    errorMessage.value = 'No account found. Please register first.'
+  if (!user) {
+    errorMessage.value = 'User not found.'
     return
   }
 
-  let savedUser = null
-
-  try {
-    savedUser = JSON.parse(savedUserRaw)
-  } catch {
-    errorMessage.value = 'Saved account data is invalid. Please register again.'
+  if (user.password !== password.value) {
+    errorMessage.value = 'Wrong password.'
     return
   }
 
-  if (!email.value.trim() || !password.value.trim()) {
-    errorMessage.value = 'Please enter your e-mail and password.'
-    return
-  }
+  // still keep session in localStorage (temporary session)
+  localStorage.setItem('loggedInUser', JSON.stringify(user))
 
-  const normalizedEmail = email.value.trim().toLowerCase()
-
-  if (
-    savedUser.email === normalizedEmail &&
-    savedUser.password === password.value
-  ) {
-    localStorage.setItem('loggedInUser', JSON.stringify(savedUser))
-    router.push('/account')
-  } else {
-    errorMessage.value = 'Invalid e-mail or password.'
-  }
+  router.push('/account')
 }
-
-onMounted(() => {
-  if (localStorage.getItem('loggedInUser')) {
-    router.replace('/account')
-  }
-})
 </script>
 
 <template>

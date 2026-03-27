@@ -1,55 +1,40 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { createUser, findUserByEmail } from '@/mock/users'
 
 const router = useRouter()
 
 const username = ref('')
 const email = ref('')
 const password = ref('')
-const confirmPassword = ref('')
 const errorMessage = ref('')
 
 function register() {
   errorMessage.value = ''
 
-  if (
-    !username.value.trim() ||
-    !email.value.trim() ||
-    !password.value.trim() ||
-    !confirmPassword.value.trim()
-  ) {
-    errorMessage.value = 'Please fill in all fields.'
+  if (!username.value || !email.value || !password.value) {
+    errorMessage.value = 'Please fill all fields'
     return
   }
 
-  if (password.value.length < 4) {
-    errorMessage.value = 'Password must be at least 4 characters.'
+  const existingUser = findUserByEmail(email.value.toLowerCase())
+
+  if (existingUser) {
+    errorMessage.value = 'User already exists'
     return
   }
 
-  if (password.value !== confirmPassword.value) {
-    errorMessage.value = 'Passwords do not match.'
-    return
-  }
-
-  const user = {
-    username: username.value.trim(),
-    email: email.value.trim().toLowerCase(),
+  const user = createUser({
+    username: username.value,
+    email: email.value.toLowerCase(),
     password: password.value
-  }
+  })
 
-  localStorage.setItem('registeredUser', JSON.stringify(user))
   localStorage.setItem('loggedInUser', JSON.stringify(user))
 
   router.push('/account')
 }
-
-onMounted(() => {
-  if (localStorage.getItem('loggedInUser')) {
-    router.replace('/account')
-  }
-})
 </script>
 
 <template>
