@@ -15,50 +15,17 @@ const categories = [
         {
           id: 1,
           name: "ASUS ROG Strix B650-E",
-          price: "349.-",
+          price: 349,
           image: "/src/assets/simulator-example.png",
+          sock_cpu: "AM5",
+          form_factor: "ATX",
+          sock_mem: "DDR5",
+          m2: 2,
+          max_ram: 256,
+          sock_ram: 4,
+          sataIII: 4,
           description:
             "High-end AM5 motherboard with PCIe 5.0 support and strong VRM cooling.",
-        },
-        {
-          id: 2,
-          name: "MSI MAG B650 Tomahawk",
-          price: "279.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "Reliable B650 board with excellent thermals and connectivity.",
-        },
-        {
-          id: 3,
-          name: "Gigabyte X670 Aorus Elite",
-          price: "389.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "Premium motherboard for Ryzen processors with advanced power delivery.",
-        },
-        {
-          id: 4,
-          name: "ASRock B760 Steel Legend",
-          price: "219.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "Solid Intel motherboard with durable components and modern features.",
-        },
-        {
-          id: 5,
-          name: "ASUS Prime Z790-P",
-          price: "299.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "Balanced Z790 board ideal for productivity and gaming builds.",
-        },
-        {
-          id: 6,
-          name: "MSI Pro B760-A WiFi",
-          price: "209.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "Affordable motherboard with WiFi and modern connectivity.",
         },
       ],
     },
@@ -69,100 +36,12 @@ const categories = [
         {
           id: 1,
           name: "AMD Ryzen 5 7600X",
-          price: "299.-",
+          price: 299,
           image: "/src/assets/simulator-example.png",
+          nr_cores: 6,
+          nr_threads: 12,
           description:
             "Fast 6-core processor ideal for gaming and everyday performance.",
-        },
-        {
-          id: 2,
-          name: "AMD Ryzen 7 7700X",
-          price: "389.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "8-core processor delivering strong gaming and productivity results.",
-        },
-        {
-          id: 3,
-          name: "AMD Ryzen 9 7900X",
-          price: "549.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "High-end CPU with excellent multi-threaded performance.",
-        },
-        {
-          id: 4,
-          name: "Intel Core i5-14600K",
-          price: "339.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "Powerful mid-range Intel CPU for gaming and creative workloads.",
-        },
-        {
-          id: 5,
-          name: "Intel Core i7-14700K",
-          price: "469.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "High-performance processor with many cores for heavy multitasking.",
-        },
-        {
-          id: 6,
-          name: "Intel Core i9-14900K",
-          price: "649.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "Flagship Intel CPU delivering top-tier gaming performance.",
-        },
-      ],
-    },
-    {
-      id: "ram",
-      label: "RAMs",
-      items: [
-        {
-          id: 1,
-          name: "Corsair Vengeance DDR5 32GB 6000MHz",
-          price: "189.-",
-          image: "/src/assets/simulator-example.png",
-          description: "High-speed DDR5 memory designed for modern gaming PCs.",
-        },
-        {
-          id: 2,
-          name: "G.Skill Trident Z5 RGB 32GB 6400MHz",
-          price: "219.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "Premium RGB RAM kit with excellent overclocking potential.",
-        },
-        {
-          id: 3,
-          name: "Kingston Fury Beast 16GB 5600MHz",
-          price: "109.-",
-          image: "/src/assets/simulator-example.png",
-          description: "Reliable DDR5 memory perfect for budget builds.",
-        },
-        {
-          id: 4,
-          name: "Corsair Dominator Platinum 32GB",
-          price: "249.-",
-          image: "/src/assets/simulator-example.png",
-          description:
-            "High-end RAM kit with premium build quality and RGB lighting.",
-        },
-        {
-          id: 5,
-          name: "Crucial Pro 32GB DDR5",
-          price: "169.-",
-          image: "/src/assets/simulator-example.png",
-          description: "Stable and efficient RAM for productivity and gaming.",
-        },
-        {
-          id: 6,
-          name: "TeamGroup T-Force Delta RGB 32GB",
-          price: "179.-",
-          image: "/src/assets/simulator-example.png",
-          description: "Stylish RGB memory designed for gaming systems.",
         },
       ],
     },
@@ -175,6 +54,11 @@ const categories = [
           name: "NZXT H7 Flow",
           price: "139.-",
           image: "/src/assets/simulator-example.png",
+          design: "Midi Tower",
+          "Height(cm)": 54.40 ,
+          "Length(cm)": 46.80,
+          "Width(cm)": 24.40 , 
+          "Weight(kg)": 11.10 ,
           description: "Clean mid-tower case optimized for airflow.",
         },
         {
@@ -182,6 +66,10 @@ const categories = [
           name: "Corsair 4000D Airflow",
           price: "119.-",
           image: "/src/assets/simulator-example.png",
+          "Height(cm)": 54.40 ,
+          "Length(cm)": 46.80,
+          "Width(cm)": 24.40 , 
+          "Weight(kg)": 11.10 ,
           description:
             "Popular PC case known for excellent cooling and build quality.",
         },
@@ -190,6 +78,10 @@ const categories = [
           name: "Lian Li Lancool III",
           price: "169.-",
           image: "/src/assets/simulator-example.png",
+          "Height(cm)": 54.40 ,
+          "Length(cm)": 46.80,
+          "Width(cm)": 24.40 , 
+          "Weight(kg)": 11.10 ,
           description:
             "Premium case with spacious interior and strong airflow.",
         },
@@ -198,6 +90,10 @@ const categories = [
           name: "Fractal Design Meshify 2",
           price: "179.-",
           image: "/src/assets/simulator-example.png",
+          "Height(cm)": 54.40 ,
+          "Length(cm)": 46.80,
+          "Width(cm)": 24.40 , 
+          "Weight(kg)": 11.10 ,
           description: "High airflow case with modular layout options.",
         },
         {
@@ -205,6 +101,10 @@ const categories = [
           name: "Phanteks Eclipse G360A",
           price: "129.-",
           image: "/src/assets/simulator-example.png",
+          "Height(cm)": 54.40 ,
+          "Length(cm)": 46.80,
+          "Width(cm)": 24.40 , 
+          "Weight(kg)": 11.10 ,
           description: "RGB gaming case with great cooling performance.",
         },
         {
@@ -212,6 +112,10 @@ const categories = [
           name: "Cooler Master TD500 Mesh",
           price: "149.-",
           image: "/src/assets/simulator-example.png",
+          "Height(cm)": 54.40 ,
+          "Length(cm)": 46.80,
+          "Width(cm)": 24.40 , 
+          "Weight(kg)": 11.10 ,
           description:
             "Stylish case featuring polygon mesh front panel and RGB fans.",
         },
@@ -383,10 +287,7 @@ function closeDetail() {
   selectedItem.value = null;
 }
 
-function configurePC(){
-    
-}
-
+function configurePC() {}
 </script>
 
 <template>
