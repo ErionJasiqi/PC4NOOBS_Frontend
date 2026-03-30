@@ -80,40 +80,32 @@ function back() {
         <!-- Step 1: Activity -->
          <template v-if="step === 1">
             <p>Which activities would you like to use a PC for?</p>
-            <div>
+            <div class="option-list">
                 <button
                     v-for="activity in activities"
                     :key="activity.id"
                     @mouseenter="hoveredActivity = activity.id"
                     @mouseleave="hoveredActivity = null"
-                    @click="selectedActivity = activity.id">
+                    @click="selectedActivity = activity.id; next()">
                 <span>{{ activity.label }}</span>
-                <p v-if="hoveredActivity === activity.id || selectedActivity === activity.id">
-                    {{ activity.info }}
-                </p>
+                <p v-if="hoveredActivity === activity.id">{{ activity.info }}</p>
             </button>
             </div>
          </template>
 
         <!-- Step 2: Budget -->
-         <template v-else-if="step === 2">
+        <template v-else-if="step === 2">
             <p>What is your budget?</p>
-            <div>
-                <span>{{ budgetLabel }}</span>
-                <input
-                    type="range"
-                    min="500"
-                    max="2500"
-                    step="100"
-                    v-model.number="budget" 
-                />
+            <div class="budget-card">
+                <div class="budget-label">{{ budgetLabel }}</div>
+                <input type="range" min="500" max="2500" step="100" v-model.number="budget" />
             </div>
-         </template>
+        </template>
 
         <!-- Step 3: Build preference -->
          <template v-else-if="step === 3">
             <p>Would you like to build your PC yourself or receive it pre-assembled?</p>
-            <div>
+            <div class="option-list">
                 <button type="button" @click="buildPreference = 'self'; next()">Build it yourself</button>
                 <button type="button" @click="buildPreference = 'prebuilt'; next()">Pre-built</button>
             </div>
@@ -122,26 +114,152 @@ function back() {
         <!-- Step 4: Design wishes -->
          <template v-else-if="step === 4">
             <p>Do you have any special design wishes?</p>
-            <div>
-                <button type="button" @click="hasDesignWish = 'yes'">
+            <div class="option-list">
+                <button type="button" @click="hasDesignWishes = 'yes'">
                     Yes
                     <textarea
-                        v-if="hasDesignWish === 'yes'"
+                        v-if="hasDesignWishes === 'yes'"
                         v-model="designWishText"
                         placeholder="Write your wishes here..."
                         @click.stop
                     />
                 </button>
-                <button type="button" @click="hasDesignWish = 'no'; next()">No</button>
+                <button type="button" @click="hasDesignWishes = 'no'; next()">No</button>
             </div>
          </template>
 
          <!-- Navigation -->
-        <div>
-            <button type="button" @click="back">← back</button>
-            <button type="button" @click="next">
+        <div class="nav-bar">
+            <button type="button" class="nav-btn" @click="back">← back</button>
+            <button type="button" class="nav-btn" @click="next">
                 {{ step === totalSteps ? 'simulation →' : 'next →' }}
             </button>
         </div>
     </main>
 </template>
+
+<style scoped>
+main {
+  min-height: calc(100vh - 80px - 200px);
+  background-color: var(--color-bg-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem 1rem;
+  position: relative;
+}
+ 
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+ 
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--color-text);
+}
+ 
+/* Activity / build / design buttons */
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 340px;
+}
+ 
+.option-list button {
+  background-color: #0d0f1a;
+  border: 1px solid #2a2f3e;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  color: var(--color-text);
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+ 
+.option-list button:hover {
+  border-color: var(--color-accent);
+}
+ 
+.option-list button p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  text-align: left;
+}
+ 
+/* Budget slider */
+.budget-card {
+  background-color: #0d0f1a;
+  border: 1px solid #2a2f3e;
+  border-radius: 4px;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  max-width: 340px;
+}
+ 
+.budget-label {
+  font-size: 0.85rem;
+  background: #2a3555;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+ 
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+ 
+/* Design textarea */
+textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  background: white;
+  color: #222;
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 70px;
+  box-sizing: border-box;
+}
+ 
+/* Bottom nav */
+.nav-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+ 
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+ 
+.nav-btn:hover {
+  color: var(--color-green);
+}
+</style>
