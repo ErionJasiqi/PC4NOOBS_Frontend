@@ -4,308 +4,218 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const queryParams = router.currentRoute.value.query;
-
+// Komponentenliste mit Beispiel-Daten 
 const categories = [
-  [
-    {
-      id: "motherboard",
-      label: "Motherboard",
-      items: [
-        {
-          id: 1,
-          name: "ASUS ROG Strix B650-E",
-          price: 349,
-          image: "/src/assets/simulator-example.png",
-          sock_cpu: "AM5",
-          form_factor: "ATX",
-          sock_mem: "DDR5",
-          m2: 2,
-          max_ram: 256,
-          sock_ram: 4,
-          sataIII: 4,
-          description:
-            "High-end AM5 motherboard with PCIe 5.0 support and strong VRM cooling.",
-        },
-      ],
-    },
-    {
-      id: "cpu",
-      label: "Processors",
-      items: [
-        {
-          id: 1,
-          name: "AMD Ryzen 5 7600X",
-          price: 299,
-          image: "/src/assets/simulator-example.png",
-          nr_cores: 6,
-          nr_threads: 12,
-          description:
-            "Fast 6-core processor ideal for gaming and everyday performance.",
-        },
-      ],
-    },
-    {
-      id: "case",
-      label: "Case",
-      items: [
-        {
-          id: 1,
-          name: "NZXT H7 Flow",
-          price: "139.-",
-          image: "/src/assets/simulator-example.png",
-          design: "Midi Tower",
-          height: 54.40 ,
-          length: 46.80,
-          width: 24.40 , 
-          weight: 11.10 ,
-          description: "Clean mid-tower case optimized for airflow.",
-        },
-        {
-          id: 2,
-          name: "Corsair 4000D Airflow",
-          price: "119.-",
-          image: "/src/assets/simulator-example.png",
-          height: 54.40 ,
-          length: 46.80,
-          width: 24.40 , 
-          weight: 11.10 ,
-          description:
-            "Popular PC case known for excellent cooling and build quality.",
-        },
-        {
-          id: 3,
-          name: "Lian Li Lancool III",
-          price: "169.-",
-          image: "/src/assets/simulator-example.png",
-          height: 54.40 ,
-          length: 46.80,
-          width: 24.40 , 
-          weight: 11.10 ,
-          description:
-            "Premium case with spacious interior and strong airflow.",
-        },
-        {
-          id: 4,
-          name: "Fractal Design Meshify 2",
-          price: "179.-",
-          image: "/src/assets/simulator-example.png",
-          height: 54.40 ,
-          length: 46.80,
-          width: 24.40 , 
-          weight: 11.10 ,
-          description: "High airflow case with modular layout options.",
-        },
-        {
-          id: 5,
-          name: "Phanteks Eclipse G360A",
-          price: "129.-",
-          image: "/src/assets/simulator-example.png",
-          height: 54.40 ,
-          length: 46.80,
-          width: 24.40 , 
-          weight: 11.10 ,
-          description: "RGB gaming case with great cooling performance.",
-        },
-        {
-          id: 6,
-          name: "Cooler Master TD500 Mesh",
-          price: "149.-",
-          image: "/src/assets/simulator-example.png",
-          height: 54.40 ,
-          length: 46.80,
-          width: 24.40 , 
-          weight: 11.10 ,
-          description:
-            "Stylish case featuring polygon mesh front panel and RGB fans.",
-        },
-      ],
-    },
-    {
-      id: "psu",
-      label: "PSUs",
-      items: [
-        {
-          id: 1,
-          name: "Corsair RM750x",
-          price: "149.-",
-          image: "/src/assets/simulator-example.png",
-          Watt: 750,
-          description:
-            "Reliable 750W fully modular power supply with gold efficiency.",
-        },
-        {
-          id: 2,
-          name: "Seasonic Focus GX-850",
-          price: "169.-",
-          image: "/src/assets/simulator-example.png",
-          Watt: 850,
-          description: "High quality 850W PSU with excellent stability.",
-        },
-        {
-          id: 3,
-          name: "be quiet! Straight Power 12 850W",
-          price: "189.-",
-          image: "/src/assets/simulator-example.png",
-          Watt: 850,
-          description: "Silent and efficient PSU for high-end systems.",
-        },
-        {
-          id: 4,
-          name: "Cooler Master MWE Gold 750",
-          price: "129.-",
-          image: "/src/assets/simulator-example.png",
-          watt: 750,
-          description: "Affordable gold-rated power supply.",
-        },
-        {
-          id: 5,
-          name: "EVGA SuperNOVA 850 G7",
-          price: "179.-",
-          image: "/src/assets/simulator-example.png",
-          Watt: 850,
-          description: "Premium modular PSU with excellent reliability.",
-        },
-        {
-          id: 6,
-          name: "Corsair HX1000i",
-          price: "259.-",
-          image: "/src/assets/simulator-example.png",
-          Watt: 1000,
-          description: "High-capacity 1000W PSU for extreme builds.",
-        },
-      ],
-    },
-    {
-      id: "gpu",
-      label: "Graphics Cards",
-      items: [
-        {
-          id: 1,
-          name: "NVIDIA RTX 4060 Ti",
-          price: "449.-",
-          image: "/src/assets/simulator-example.png",
-          max_res: "7680 x 4320",
-          storage_cap: 8,
-          req_power: 160,
-          description:
-            "Efficient GPU designed for 1080p and entry 1440p gaming.",
-        },
-        {
-          id: 2,
-          name: "NVIDIA RTX 4070 Super",
-          price: "679.-",
-          max_res: "7680 x 4320",
-          storage_cap: 8,
-          req_power: 160,
-          image: "/src/assets/simulator-example.png",
-          description: "Excellent performance for modern 1440p gaming.",
-        },
-        {
-          id: 3,
-          name: "NVIDIA RTX 4080 Super",
-          price: "1199.-",
-          max_res: "7680 x 4320",
-          storage_cap: 8,
-          req_power: 160,
-          image: "/src/assets/simulator-example.png",
-          description: "High-end GPU capable of strong 4K gaming performance.",
-        },
-        {
-          id: 4,
-          name: "AMD Radeon RX 7700 XT",
-          price: "499.-",
-          max_res: "7680 x 4320",
-          storage_cap: 8,
-          req_power: 160,
-          image: "/src/assets/simulator-example.png",
-          description: "Great mid-range GPU for high-refresh 1440p gaming.",
-        },
-        {
-          id: 5,
-          name: "AMD Radeon RX 7800 XT",
-          price: "559.-",
-          max_res: "7680 x 4320",
-          storage_cap: 8,
-          req_power: 160,
-          image: "/src/assets/simulator-example.png",
-          description:
-            "Powerful graphics card delivering strong raster performance.",
-        },
-        {
-          id: 6,
-          name: "AMD Radeon RX 7900 XTX",
-          price: "1049.-",
-          max_res: "7680 x 4320",
-          storage_cap: 8,
-          req_power: 160,
-          image: "/src/assets/simulator-example.png",
-          description: "Flagship AMD GPU designed for high-end gaming systems.",
-        },
-      ],
-    },
-    {
-      id: "cooler",
-      label: "Coolers",
-      items: [
-        {
-          id: 1,
-          name: "Noctua NH-D15",
-          price: "119.-",
-          image: "/src/assets/simulator-example.png",
-          amount_fans: 2,
-          airflow: 140.2,
-          description:
-            "Legendary air cooler known for exceptional cooling performance.",
-        },
-        {
-          id: 2,
-          name: "be quiet! Dark Rock Pro 5",
-          price: "109.-",
-          image: "/src/assets/simulator-example.png",
-          amount_fans: 2,
-          airflow: 140.2,
-          description: "Ultra-quiet high-end air cooler.",
-        },
-        {
-          id: 3,
-          name: "Corsair iCUE H100i Elite",
-          price: "169.-",
-          image: "/src/assets/simulator-example.png",
-          amount_fans: 2,
-          airflow: 140.2,
-          description: "240mm AIO liquid cooler with RGB lighting.",
-        },
-        {
-          id: 4,
-          name: "NZXT Kraken 360",
-          price: "229.-",
-          image: "/src/assets/simulator-example.png",
-          amount_fans: 2,
-          airflow: 140.2,
-          description: "High-end 360mm liquid cooler with LCD pump display.",
-        },
-        {
-          id: 5,
-          name: "Arctic Liquid Freezer II 280",
-          price: "139.-",
-          image: "/src/assets/simulator-example.png",
-          amount_fans: 2,
-          airflow: 140.2,
-          description: "Highly efficient liquid cooler with excellent value.",
-        },
-        {
-          id: 6,
-          name: "Cooler Master Hyper 212 Halo",
-          price: "59.-",
-          image: "/src/assets/simulator-example.png",
-          amount_fans: 2,
-          airflow: 140.2,
-          description: "Classic budget air cooler with RGB fan.",
-        },
-      ],
-    },
-  ],
+  {
+    id: "hauptplatte",
+    label: "Hauptplatte",
+    items: [
+      {
+        id: 1,
+        name: "Rog Crosshair X670E Hero",
+        price: "350.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 2,
+        name: "Rog Strix X670E-E Gaming WiFi",
+        price: "400.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 3,
+        name: "TUF Gaming X670E-Plus",
+        price: "200.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+    ],
+  },
+  {
+    id: "prozessoren",
+    label: "Prozessoren",
+    items: [
+      {
+        id: 1,
+        name: "Intel Core i7-14700K",
+        price: "666.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 2,
+        name: "AMD Ryzen 7 7800X3D",
+        price: "398.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 3,
+        name: "AMD Ryzen 5 9600X",
+        price: "430.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+    ],
+  },
+  {
+    id: "rams",
+    label: "RAMs",
+    items: [
+      {
+        id: 1,
+        name: "Corsair Vengeance",
+        price: "439.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 2,
+        name: "Kingston Fury Beast",
+        price: "129.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 3,
+        name: "G.Skill Trident Z5 NEO RGB",
+        price: "547.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+    ],
+  },
+  {
+    id: "gehaeuse",
+    label: "Gehäuse",
+    items: [
+      {
+        id: 1,
+        name: "Darkflash Tech Darkflash DS900WS computer case",
+        price: "843.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 2,
+        name: "be quiet! Silent Base 802 Window",
+        price: "132.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 3,
+        name: "Genesis Natec ARACANTA Midi Tower",
+        price: "495.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+    ],
+  },
+  {
+    id: "psus",
+    label: "PSUs",
+    items: [
+      {
+        id: 1,
+        name: "Corsair PSU SF1000L",
+        price: "187.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 2,
+        name: "Gigabyte UD850GM PG5",
+        price: "420.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 3,
+        name: "ASUS TUF Gaming 1000W Gold White",
+        price: "244.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+    ],
+  },
+  {
+    id: "grafikkarten",
+    label: "Grafikkarten",
+    items: [
+      {
+        id: 1,
+        name: "Gigabyte GeForce RTX 5060 Ti",
+        price: "345.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 2,
+        name: "ASUS Dual GeForce RTX 5060 Ti OC",
+        price: "242.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 3,
+        name: "GeForce RTX 5070 Ti Aero OC",
+        price: "133.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+    ],
+  },
+  {
+    id: "kuehler",
+    label: "Kühler",
+    items: [
+      {
+        id: 1,
+        name: "be quiet! Pure Rock 3",
+        price: "165.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 2,
+        name: "Peerless Assasin 120 SE",
+        price: "254.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+      {
+        id: 3,
+        name: "Arctic Freezer 36 A-RGB",
+        price: "354.-",
+        image: "/src/assets/simulator-example.png",
+        description:
+          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+      },
+    ],
+  },
 ];
 
 const openCategory = ref(null);
@@ -323,70 +233,387 @@ function closeDetail() {
   selectedItem.value = null;
 }
 
-function configurePC() {}
+function selectComponent(item) {
+  // Komponente speichern / weiterverarbeiten – hier bei Bedarf erweitern
+  selectedItem.value = null;
+}
 </script>
 
 <template>
   <div class="simulator-layout">
     <!-- Sidebar -->
     <aside class="sidebar">
-      <h2>Components</h2>
+      <h2 class="sidebar-heading">Komponenten</h2>
 
-      <div v-for="category in categories" :key="category.id">
-        <!-- Category title -->
-        <div @click="toggleCategory(category.id)" class="category-title">
-          {{ category.label }}
+      <div v-for="cat in categories" :key="cat.id" class="category-block">
+        <!-- Kategorie-Titel -->
+        <div
+          class="category-title"
+          :class="{ active: openCategory === cat.id }"
+          @click="toggleCategory(cat.id)"
+        >
+          {{ cat.label }}
         </div>
 
         <!-- Dropdown -->
-        <div v-if="openCategory === category.id" class="dropdown">
-          <p class="dropdown-heading">Our Recommendations</p>
+        <transition name="slide">
+          <div v-if="openCategory === cat.id" class="dropdown">
+            <p class="dropdown-heading">Unsere Empfehlungen</p>
 
-          <div
-            v-for="item in category.items"
-            :key="item.id"
-            class="dropdown-item"
-            @click="openDetail(item)"
-          >
-            <span class="item-name">{{ item.name }}</span>
-            <span class="item-price">{{ item.price }}</span>
-            <img :src="item.image" :alt="item.name" class="item-thumb" />
+            <div
+              v-for="item in cat.items"
+              :key="item.id"
+              class="dropdown-item"
+              @click="openDetail(item)"
+            >
+              <span class="item-name">{{ item.name }}</span>
+              <span class="item-price">{{ item.price }}</span>
+              <img :src="item.image" :alt="item.name" class="item-thumb" />
+              
+            </div>
           </div>
-        </div>
+        </transition>
       </div>
 
-      <!-- Payment button -->
+      <!-- Bezahl-Button -->
       <button
         type="button"
         class="payment-btn"
         @click="router.push('/payment')"
       >
-        Finalize PC / Purchase
+        PC/ Kauf<br />finalisieren
       </button>
     </aside>
 
-    <!-- Main area (PC image placeholder) -->
+    <!-- ── Haupt-Bereich (PC-Bild) ─────────────────────────────────────── -->
     <main class="simulator-main">
-      <img src="/src/assets/pc-homescreen.png" alt="PC Preview" />
+      <div class="pc-image-wrapper">
+        <img src="/src/assets/pc-homescreen.png" alt="PC Vorschau" />
+      </div>
     </main>
 
-    <!-- Detail modal -->
-    <div v-if="selectedItem" class="modal-overlay" @click.self="closeDetail">
-      <div class="modal">
-        <img
-          :src="selectedItem.image"
-          :alt="selectedItem.name"
-          class="modal-img"
-        />
-        <div class="modal-info">
-          <h3>{{ selectedItem.name }}</h3>
-          <p>{{ selectedItem.description }}</p>
-        </div>
-        <div class="modal-actions">
-          <button type="button" @click="closeDetail">Change selection</button>
-          <button type="button" @click="closeDetail">Select component</button>
+    <transition name="fade">
+      <div
+        v-if="selectedItem"
+        class="modal-overlay"
+        @click.self="closeDetail"
+      >
+        <div class="modal">
+          <!-- 3 Karten nebeneinander (wie in den Screenshots) -->
+          <div class="modal-cards">
+            <div
+              v-for="item in categories.find(
+                (c) => c.items.some((i) => i.id === selectedItem.id && c.items.includes(selectedItem))
+              )?.items ?? [selectedItem]"
+              :key="item.id"
+              class="modal-card"
+              :class="{ 'modal-card--active': item.id === selectedItem.id }"
+            >
+              <img :src="item.image" :alt="item.name" class="modal-img" />
+              <h3 class="modal-name">{{ item.name }}</h3>
+              <p class="modal-desc">{{ item.description }}</p>
+              <div class="modal-actions">
+                <button type="button" class="btn-secondary" @click="closeDetail">
+                  Auswahl ändern
+                </button>
+                <button type="button" class="btn-primary" @click="selectComponent(item)">
+                  Komponent auswählen
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
+
+<style scoped>
+.simulator-layout {
+  display: flex;
+  min-height: calc(100vh - 70px); /* Platz für Header */
+  background: #1a1f2e;
+  color: #e0e6f0;
+  position: relative;
+}
+
+.sidebar {
+  width: 230px;
+  min-width: 230px;
+  background: #1e2435;
+  border-right: 1px solid #2a3148;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 24px 0;
+  overflow-y: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.sidebar-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e0e6f0;
+  padding: 18px 20px 10px;
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.category-block {
+  width: 100%;
+}
+
+.category-title {
+  padding: 9px 20px;
+  font-size: 0.9rem;
+  color: #c8d0e0;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  border-left: 3px solid transparent;
+}
+
+.category-title:hover,
+.category-title.active {
+  color: #fff;
+  background: #252d42;
+  border-left-color: #39d353;
+}
+
+.dropdown {
+  background: #252d42;
+  border-left: 3px solid #39d353;
+  margin-left: 0;
+  overflow: hidden;
+}
+
+.dropdown-heading {
+  font-size: 0.72rem;
+  color: #8a99b8;
+  padding: 7px 14px 4px;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px 7px 25px;
+  cursor: pointer;
+  border-bottom: 1px solid #1e2435;
+  transition: background 0.12s;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background: #2e3850;
+}
+
+.item-name {
+  font-size: 0.78rem;
+  color: #d0d8ec;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90px;
+}
+
+.item-price {
+  font-size: 0.78rem;
+  color: #c8d0e0;
+  white-space: nowrap;
+  margin-right: 4px;
+}
+
+.item-thumb {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 3px;
+  background: #1a1f2e;
+  flex-shrink: 0;
+}
+
+.item-info-btn {
+  background: none;
+  border: none;
+  color: #8a99b8;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.payment-btn {
+  margin: 18px 14px 0;
+  padding: 12px 10px;
+  background: #39d353;
+  color: #0d1117;
+  border: none;
+  border-radius: 22px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.3;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.payment-btn:hover {
+  background: #2ebf47;
+  transform: translateY(-1px);
+}
+
+.simulator-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #1a1f2e;
+}
+
+.pc-image-wrapper {
+  background: #111520;
+  border-radius: 10px;
+  padding: 16px;
+  max-width: 760px;
+  width: 100%;
+}
+
+.pc-image-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.modal {
+  background: #1e2435;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 1100px;
+  width: 100%;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.modal-cards {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.modal-card {
+  background: #252d42;
+  border-radius: 8px;
+  padding: 20px;
+  flex: 1 1 280px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-card--active {
+}
+
+.modal-img {
+  width: 120px;
+  height: 90px;
+  object-fit: contain;
+  align-self: flex-start;
+}
+
+.modal-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.modal-desc {
+  font-size: 0.85rem;
+  color: #9aa5bf;
+  margin: 0;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  margin-top: 8px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 9px 16px;
+  border-radius: 22px;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-primary {
+  background: #39d353;
+  color: #0d1117;
+}
+
+.btn-primary:hover {
+  background: #2ebf47;
+}
+
+.btn-secondary {
+  background: #39d353;
+  color: #0d1117;
+}
+
+.btn-secondary:hover {
+  background: #2ebf47;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: max-height 0.22s ease, opacity 0.18s ease;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.18s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
