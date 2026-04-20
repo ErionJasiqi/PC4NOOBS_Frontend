@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { findUserByEmail } from '@/mock/users'
+import { loginT, loginUser } from '@/api/requests'
 
 const router = useRouter()
 
@@ -9,25 +9,9 @@ const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
 
-function login() {
-  errorMessage.value = ''
-
-  const user = findUserByEmail(email.value.trim().toLowerCase())
-
-  if (!user) {
-    errorMessage.value = 'User not found.'
-    return
-  }
-
-  if (user.password !== password.value) {
-    errorMessage.value = 'Wrong password.'
-    return
-  }
-
-  // still keep session in localStorage (temporary session)
-  localStorage.setItem('loggedInUser', JSON.stringify(user))
-
-  router.push('/account')
+async function login() {
+  const user = await loginT(email.value,password.value)
+  console.log(user)
 }
 </script>
 
