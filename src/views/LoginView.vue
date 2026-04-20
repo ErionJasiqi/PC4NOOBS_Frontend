@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { loginT, loginUser } from '@/api/requests'
+import { loginUser } from '@/api/requests'
 
 const router = useRouter()
 
@@ -10,7 +10,7 @@ const password = ref('')
 const errorMessage = ref('')
 
 async function login() {
-  const user = await loginT(email.value,password.value)
+  const user = await loginUser(email.value,password.value)
   console.log(user)
 }
 </script>
