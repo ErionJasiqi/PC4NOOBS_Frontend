@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import ModelViewer from "../components/ModelViewer.vue";
 
 const router = useRouter();
 
@@ -367,7 +368,19 @@ function configurePC() {}
 
     <!-- Main area (PC image placeholder) -->
     <main class="simulator-main">
-      <img src="/src/assets/pc-homescreen.png" alt="PC Preview" />
+      <div class="pc-image-wrapper">
+        <model-viewer
+  src="/3DModels/cpu_cooler.glb"
+  camera-controls
+  auto-rotate
+  style="width: 100%; height: 500px;"
+  camera-orbit="0deg 75deg 2.5m"
+  field-of-view="45deg"
+  exposure="1"
+  shadow-intensity="1"
+  ar
+></model-viewer>
+      </div>
     </main>
 
     <!-- Detail modal -->
