@@ -38,6 +38,8 @@ export async function loginUser(email, password) {
     });
     return response;
   } catch (error) {
-    throw new Error(error);
+    throw new Error("Failed to login", {
+      cause: error,
+    });
   }
 }
