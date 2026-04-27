@@ -41,3 +41,25 @@ export async function loginUser(email, password) {
     throw new Error(error);
   }
 }
+
+export async function getAccount(userId) {
+  try {
+    const response = await request(`/accounts/${userId}`, {
+      method: "GET",
+    });
+    return response;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+export async function test() {
+  try {
+    const response = await request("/tester", {
+      method: "GET",
+    });
+    return response;
+  } catch (error) {
+    throw new Error(error);
+  }
+}

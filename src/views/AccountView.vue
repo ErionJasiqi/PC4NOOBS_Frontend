@@ -1,35 +1,46 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { getAccount } from "@/api/requests";
+import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 
-const router = useRouter()
-const currentUser = ref(null)
+const router = useRouter();
+const currentUser = ref(null);
+const isLoading = ref(true);
 
 function logout() {
-  localStorage.removeItem('loggedInUser')
-  router.push('/login')
+  localStorage.removeItem("loggedInUser");
+  router.push("/login");
 }
 
-onMounted(() => {
-  const loggedInRaw = localStorage.getItem('loggedInUser')
+onMounted(async () => {
+  const loggedInRaw = localStorage.getItem("loggedInUser");
 
   if (!loggedInRaw) {
-    router.replace('/login')
-    return
+    router.replace("/login");
+    return;
   }
 
   try {
-    currentUser.value = JSON.parse(loggedInRaw)
-  } catch {
-    localStorage.removeItem('loggedInUser')
-    router.replace('/login')
+    isLoading.value = true;
+    console.log(loggedInRaw);
+    currentUser.value = await getAccount(loggedInRaw);
+    console.log(currentUser.value);
+  } catch (error) {
+    console.error(error);
+    localStorage.removeItem("loggedInUser");
+    router.replace("/login");
+  } finally {
+    isLoading.value = false;
   }
-})
+});
 </script>
 
 <template>
   <main class="account-main">
-    <div class="account-card">
+    <div v-if="isLoading">
+      <p>LOADINGGGGGGGGGGG</p>
+    </div>
+    <div class="account-card" v-if="!isLoading">
       <h1>Account Details</h1>
 
       <div v-if="currentUser" class="account-body">
@@ -43,20 +54,20 @@ onMounted(() => {
             <button type="button" class="edit-btn">✏</button>
           </div>
 
-          <p>{{ currentUser.username }}</p>
-          <p>{{ currentUser.email }}</p>
+          <p>{{ currentUser.Username }}</p>
+          <p>{{ currentUser.Email }}</p>
           <p>+41 79 345 67 89</p>
           <p>31.12.2000</p>
 
           <h2>Delivery Address</h2>
-          <p>Blächikonstrasse 3</p>
-          <p>Bounarge 9659</p>
+          <p>{{ currentUser.Address }}</p>
+          <p>{{ currentUser.Address }}</p>
 
           <h2>Selected Language</h2>
           <p>German</p>
 
           <h2>Customer ID</h2>
-          <p>123456789</p>
+          <p>{{ currentUser.UserId }}</p>
 
           <button type="button" class="auth-btn logout-btn" @click="logout">
             LOGOUT

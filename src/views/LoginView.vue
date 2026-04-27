@@ -1,17 +1,20 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { loginUser } from '@/api/requests'
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { loginUser } from "@/api/requests";
 
-const router = useRouter()
+const router = useRouter();
 
-const email = ref('')
-const password = ref('')
-const errorMessage = ref('')
+const email = ref("");
+const password = ref("");
+const errorMessage = ref("");
 
 async function login() {
-  const user = await loginUser(email.value,password.value)
-  console.log(user)
+  const user = await loginUser(email.value, password.value);
+  if (user) {
+    localStorage.setItem("loggedInUser", user.userId);
+    router.push("/account");
+  }
 }
 </script>
 
@@ -24,12 +27,7 @@ async function login() {
 
       <div class="form-group">
         <label for="email">E-Mail</label>
-        <input
-          id="email"
-          type="email"
-          v-model="email"
-          autocomplete="email"
-        />
+        <input id="email" type="email" v-model="email" autocomplete="email" />
       </div>
 
       <div class="form-group">
