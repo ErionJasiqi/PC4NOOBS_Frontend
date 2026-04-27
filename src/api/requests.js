@@ -43,3 +43,17 @@ export async function loginUser(email, password) {
     });
   }
 }
+
+export async function registerUser(username, email, password) {
+  try {
+    const response = await request("/register", {
+      method: "POST",
+      body: JSON.stringify({ username, email, password }),
+    });
+    return response;
+  } catch (error) {
+    throw new Error("Failed to register", {
+      cause: error,
+    });
+  }
+}

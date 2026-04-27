@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { createUser, findUserByEmail } from '@/mock/users'
+import { registerUser } from '@/api/requests'
 
 const router = useRouter()
 
@@ -9,31 +9,27 @@ const username = ref('')
 const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
+const confirmPassword = ref('')
 
-function register() {
+async function register() {
   errorMessage.value = ''
 
   if (!username.value || !email.value || !password.value) {
-    errorMessage.value = 'Please fill all fields'
+    errorMessage.value = 'Please fill all fields.'
     return
   }
 
-  const existingUser = findUserByEmail(email.value.toLowerCase())
-
-  if (existingUser) {
-    errorMessage.value = 'User already exists'
+  if (password.value !== confirmPassword.value) {
+    errorMessage.value = 'Passwords do not match.'
     return
   }
 
-  const user = createUser({
-    username: username.value,
-    email: email.value.toLowerCase(),
-    password: password.value
-  })
-
-  localStorage.setItem('loggedInUser', JSON.stringify(user))
-
-  router.push('/account')
+  try {
+    await registerUser(username.value, email.value, password.value)
+    router.push('/login')
+  } catch (err) {
+    errorMessage.value = err?.message || 'Registration failed.'
+  }
 }
 </script>
 
