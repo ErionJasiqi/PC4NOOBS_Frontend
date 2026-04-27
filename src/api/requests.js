@@ -38,7 +38,9 @@ export async function loginUser(email, password) {
     });
     return response;
   } catch (error) {
-    throw new Error(error);
+    throw new Error("Failed to login", {
+      cause: error,
+    });
   }
 }
 
@@ -61,5 +63,19 @@ export async function test() {
     return response;
   } catch (error) {
     throw new Error(error);
+  }
+}
+
+export async function registerUser(username, email, password) {
+  try {
+    const response = await request("/register", {
+      method: "POST",
+      body: JSON.stringify({ username, email, password }),
+    });
+    return response;
+  } catch (error) {
+    throw new Error("Failed to register", {
+      cause: error,
+    });
   }
 }
