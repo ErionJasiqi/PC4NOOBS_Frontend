@@ -4,11 +4,11 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-// Komponentenliste mit Beispiel-Daten 
+// Component list with example data
 const categories = [
   {
     id: "hauptplatte",
-    label: "Hauptplatte",
+    label: "Motherboard",
     items: [
       {
         id: 1,
@@ -16,7 +16,7 @@ const categories = [
         price: "350.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this motherboard for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -24,7 +24,7 @@ const categories = [
         price: "400.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this motherboard for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -32,13 +32,13 @@ const categories = [
         price: "200.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this motherboard for you because it offers very good performance for its comparatively low price.",
       },
     ],
   },
   {
     id: "prozessoren",
-    label: "Prozessoren",
+    label: "Processors",
     items: [
       {
         id: 1,
@@ -46,7 +46,7 @@ const categories = [
         price: "666.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this processor for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -54,7 +54,7 @@ const categories = [
         price: "398.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this processor for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -62,13 +62,13 @@ const categories = [
         price: "430.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this processor for you because it offers very good performance for its comparatively low price.",
       },
     ],
   },
   {
     id: "rams",
-    label: "RAMs",
+    label: "RAM",
     items: [
       {
         id: 1,
@@ -76,7 +76,7 @@ const categories = [
         price: "439.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this RAM for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -84,7 +84,7 @@ const categories = [
         price: "129.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this RAM for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -92,13 +92,13 @@ const categories = [
         price: "547.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this RAM for you because it offers very good performance for its comparatively low price.",
       },
     ],
   },
   {
     id: "gehaeuse",
-    label: "Gehäuse",
+    label: "Cases",
     items: [
       {
         id: 1,
@@ -106,7 +106,7 @@ const categories = [
         price: "843.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this case for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -114,7 +114,7 @@ const categories = [
         price: "132.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this case for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -122,7 +122,7 @@ const categories = [
         price: "495.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this case for you because it offers very good performance for its comparatively low price.",
       },
     ],
   },
@@ -136,7 +136,7 @@ const categories = [
         price: "187.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this PSU for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -144,7 +144,7 @@ const categories = [
         price: "420.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this PSU for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -152,13 +152,13 @@ const categories = [
         price: "244.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this PSU for you because it offers very good performance for its comparatively low price.",
       },
     ],
   },
   {
     id: "grafikkarten",
-    label: "Grafikkarten",
+    label: "Graphics Cards",
     items: [
       {
         id: 1,
@@ -166,7 +166,7 @@ const categories = [
         price: "345.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this graphics card for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -174,7 +174,7 @@ const categories = [
         price: "242.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this graphics card for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -182,13 +182,13 @@ const categories = [
         price: "133.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this graphics card for you because it offers very good performance for its comparatively low price.",
       },
     ],
   },
   {
     id: "kuehler",
-    label: "Kühler",
+    label: "Coolers",
     items: [
       {
         id: 1,
@@ -196,7 +196,7 @@ const categories = [
         price: "165.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this cooler for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -204,7 +204,7 @@ const categories = [
         price: "254.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this cooler for you because it offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -212,7 +212,7 @@ const categories = [
         price: "354.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+          "We selected this cooler for you because it offers very good performance for its comparatively low price.",
       },
     ],
   },
@@ -234,7 +234,7 @@ function closeDetail() {
 }
 
 function selectComponent(item) {
-  // Komponente speichern / weiterverarbeiten – hier bei Bedarf erweitern
+  // Save / process component – extend here as needed
   selectedItem.value = null;
 }
 </script>
@@ -243,10 +243,10 @@ function selectComponent(item) {
   <div class="simulator-layout">
     <!-- Sidebar -->
     <aside class="sidebar">
-      <h2 class="sidebar-heading">Komponenten</h2>
+      <h2 class="sidebar-heading">Components</h2>
 
       <div v-for="cat in categories" :key="cat.id" class="category-block">
-        <!-- Kategorie-Titel -->
+        <!-- Category title -->
         <div
           class="category-title"
           :class="{ active: openCategory === cat.id }"
@@ -258,7 +258,7 @@ function selectComponent(item) {
         <!-- Dropdown -->
         <transition name="slide">
           <div v-if="openCategory === cat.id" class="dropdown">
-            <p class="dropdown-heading">Unsere Empfehlungen</p>
+            <p class="dropdown-heading">Our Recommendations</p>
 
             <div
               v-for="item in cat.items"
@@ -269,26 +269,25 @@ function selectComponent(item) {
               <span class="item-name">{{ item.name }}</span>
               <span class="item-price">{{ item.price }}</span>
               <img :src="item.image" :alt="item.name" class="item-thumb" />
-              
             </div>
           </div>
         </transition>
       </div>
 
-      <!-- Bezahl-Button -->
+      <!-- Payment button -->
       <button
         type="button"
         class="payment-btn"
         @click="router.push('/payment')"
       >
-        PC/ Kauf<br />finalisieren
+        Finalize<br />PC / Purchase
       </button>
     </aside>
 
-    <!-- ── Haupt-Bereich (PC-Bild) ─────────────────────────────────────── -->
+    <!-- ── Main area (PC image) ─────────────────────────────────────── -->
     <main class="simulator-main">
       <div class="pc-image-wrapper">
-        <img src="/src/assets/pc-homescreen.png" alt="PC Vorschau" />
+        <img src="/src/assets/pc-homescreen.png" alt="PC Preview" />
       </div>
     </main>
 
@@ -299,7 +298,7 @@ function selectComponent(item) {
         @click.self="closeDetail"
       >
         <div class="modal">
-          <!-- 3 Karten nebeneinander (wie in den Screenshots) -->
+          <!-- 3 cards side by side (as shown in the screenshots) -->
           <div class="modal-cards">
             <div
               v-for="item in categories.find(
@@ -314,10 +313,10 @@ function selectComponent(item) {
               <p class="modal-desc">{{ item.description }}</p>
               <div class="modal-actions">
                 <button type="button" class="btn-secondary" @click="closeDetail">
-                  Auswahl ändern
+                  Change selection
                 </button>
                 <button type="button" class="btn-primary" @click="selectComponent(item)">
-                  Komponent auswählen
+                  Select component
                 </button>
               </div>
             </div>
@@ -331,7 +330,7 @@ function selectComponent(item) {
 <style scoped>
 .simulator-layout {
   display: flex;
-  min-height: calc(100vh - 70px); /* Platz für Header */
+  min-height: calc(100vh - 70px); /* Space for header */
   background: #1a1f2e;
   color: #e0e6f0;
   position: relative;
