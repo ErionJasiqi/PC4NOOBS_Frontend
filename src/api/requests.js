@@ -48,6 +48,19 @@ export async function loginUser(email, password) {
   }
 }
 
+export async function logoutUser() {
+  try {
+    const response = await request("/logout", {
+      method: "POST",
+    });
+    return response;
+  } catch (error) {
+    throw new Error("Logout failed", {
+      cause: error,
+    });
+  }
+}
+
 export async function getAccount(userId) {
   try {
     const response = await request(`/accounts/${userId}`, {

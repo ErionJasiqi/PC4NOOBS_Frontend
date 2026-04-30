@@ -1,5 +1,5 @@
 <script setup>
-import { getAccount } from "@/api/requests";
+import { getAccount, logoutUser } from "@/api/requests";
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
@@ -7,8 +7,9 @@ const router = useRouter();
 const currentUser = ref(null);
 const isLoading = ref(true);
 
-function logout() {
+async function logout() {
   localStorage.removeItem("loggedInUser");
+  console.log(await logoutUser())
   router.push("/login");
 }
 
@@ -54,15 +55,15 @@ onMounted(async () => {
 
           <p>{{ currentUser.Username }}</p>
           <p>{{ currentUser.Email }}</p>
-          <p>+41 79 345 67 89</p>
-          <p>31.12.2000</p>
+          <p>{{ currentUser.Phone }}</p>
+          <p>{{ currentUser.CreatedAt }}</p>
 
           <h2>Delivery Address</h2>
           <p>{{ currentUser.Address }}</p>
-          <p>{{ currentUser.Address }}</p>
+          <p>{{ currentUser.City }}</p>
 
           <h2>Selected Language</h2>
-          <p>German</p>
+          <p>English</p>
 
           <h2>Customer ID</h2>
           <p>{{ currentUser.UserId }}</p>
