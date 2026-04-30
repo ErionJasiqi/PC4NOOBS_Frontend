@@ -74,11 +74,11 @@ export async function getAccount(userId) {
   }
 }
 
-export async function registerUser(username, email, password) {
+export async function registerUser(username, email, password, address, city, phone) {
   try {
     const response = await request("/register", {
       method: "POST",
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ username, email, password, address, city, phone }),
     });
     return response;
   } catch (error) {
