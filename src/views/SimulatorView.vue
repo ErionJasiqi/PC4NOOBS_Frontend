@@ -16,7 +16,7 @@ const categories = [
         price: "350.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this motherboard for you because it offers very good performance for its comparatively low price.",
+          "This motherboard offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -24,7 +24,7 @@ const categories = [
         price: "400.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this motherboard for you because it offers very good performance for its comparatively low price.",
+          "This motherboard offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -32,7 +32,7 @@ const categories = [
         price: "200.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this motherboard for you because it offers very good performance for its comparatively low price.",
+          "This motherboard offers very good performance for its comparatively low price.",
       },
     ],
   },
@@ -46,7 +46,7 @@ const categories = [
         price: "666.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this processor for you because it offers very good performance for its comparatively low price.",
+          "This processor offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -54,7 +54,7 @@ const categories = [
         price: "398.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this processor for you because it offers very good performance for its comparatively low price.",
+          "This processor offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -62,7 +62,7 @@ const categories = [
         price: "430.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this processor for you because it offers very good performance for its comparatively low price.",
+          "This processor offers very good performance for its comparatively low price.",
       },
     ],
   },
@@ -76,7 +76,7 @@ const categories = [
         price: "439.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this RAM for you because it offers very good performance for its comparatively low price.",
+          "This RAM offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -84,7 +84,7 @@ const categories = [
         price: "129.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this RAM for you because it offers very good performance for its comparatively low price.",
+          "This RAM offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -92,7 +92,7 @@ const categories = [
         price: "547.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this RAM for you because it offers very good performance for its comparatively low price.",
+          "This RAM offers very good performance for its comparatively low price.",
       },
     ],
   },
@@ -106,7 +106,7 @@ const categories = [
         price: "843.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this case for you because it offers very good performance for its comparatively low price.",
+          "This case offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -114,7 +114,7 @@ const categories = [
         price: "132.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this case for you because it offers very good performance for its comparatively low price.",
+          "This case offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -122,7 +122,7 @@ const categories = [
         price: "495.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this case for you because it offers very good performance for its comparatively low price.",
+          "This case offers very good performance for its comparatively low price.",
       },
     ],
   },
@@ -136,7 +136,7 @@ const categories = [
         price: "187.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this PSU for you because it offers very good performance for its comparatively low price.",
+          "This PSU offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -144,7 +144,7 @@ const categories = [
         price: "420.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this PSU for you because it offers very good performance for its comparatively low price.",
+          "This PSU offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -152,7 +152,7 @@ const categories = [
         price: "244.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this PSU for you because it offers very good performance for its comparatively low price.",
+          "This PSU offers very good performance for its comparatively low price.",
       },
     ],
   },
@@ -166,7 +166,7 @@ const categories = [
         price: "345.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this graphics card for you because it offers very good performance for its comparatively low price.",
+          "This graphics card offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -174,7 +174,7 @@ const categories = [
         price: "242.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this graphics card for you because it offers very good performance for its comparatively low price.",
+          "This graphics card offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -182,7 +182,7 @@ const categories = [
         price: "133.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this graphics card for you because it offers very good performance for its comparatively low price.",
+          "This graphics card offers very good performance for its comparatively low price.",
       },
     ],
   },
@@ -196,7 +196,7 @@ const categories = [
         price: "165.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this cooler for you because it offers very good performance for its comparatively low price.",
+          "This cooler offers very good performance for its comparatively low price.",
       },
       {
         id: 2,
@@ -204,7 +204,7 @@ const categories = [
         price: "254.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this cooler for you because it offers very good performance for its comparatively low price.",
+          "This cooler offers very good performance for its comparatively low price.",
       },
       {
         id: 3,
@@ -212,7 +212,7 @@ const categories = [
         price: "354.-",
         image: "/src/assets/simulator-example.png",
         description:
-          "We selected this cooler for you because it offers very good performance for its comparatively low price.",
+          "This cooler offers very good performance for its comparatively low price.",
       },
     ],
   },
