@@ -10,11 +10,14 @@ const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
 const confirmPassword = ref('')
+const address = ref('')
+const city = ref('')
+const phone = ref('')
 
 async function register() {
   errorMessage.value = ''
 
-  if (!username.value || !email.value || !password.value) {
+  if (!username.value || !email.value || !password.value || !address.value || !city.value || !phone.value) {
     errorMessage.value = 'Please fill all fields.'
     return
   }
@@ -25,7 +28,7 @@ async function register() {
   }
 
   try {
-    await registerUser(username.value, email.value, password.value)
+    await registerUser(username.value, email.value, password.value, address.value, city.value, phone.value)
     router.push('/login')
   } catch (err) {
     errorMessage.value = err?.message || 'Registration failed.'
@@ -48,6 +51,21 @@ async function register() {
       <div class="form-group">
         <label for="email">E-Mail</label>
         <input id="email" type="email" v-model="email" autocomplete="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input id="address" type="text" v-model="address" autocomplete="street-address" />
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+        <input id="city" type="text" v-model="city" autocomplete="address-level2" />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" v-model="phone" autocomplete="tel" />
       </div>
 
       <div class="form-group">
