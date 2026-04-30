@@ -1,15 +1,15 @@
 <template>
     <article>
-        <h1>Memory & Motherboard</h1>
+        <h1>Storage & Motherboard</h1>
 
         <p>
-            Als Nächstes wird die SSD installiert. 
+            Next, install the SSD. 
         </p>
         <p>
-            Schaue zuerst in dein Mainboard-Handbuch, um den passenden M.2-Slot zu finden manche Boards haben mehrere, die unterschiedliche Geschwindigkeiten oder Protokolle unterstützen. Entferne die kleine Schraube, die den Halter für die SSD fixiert, und stecke die SSD schräg in den Slot, bis sie einrastet. Senke sie dann vorsichtig ab und befestige sie mit der Schraube.
+            First, consult your motherboard manual to find the correct M.2 slot—some motherboards have multiple slots that support different speeds or protocols. Remove the small screw securing the SSD bracket, and insert the SSD at an angle into the slot until it clicks into place. Then gently lower it into place and secure it with the screw.
         </p>
         <p>
-            Bei SATA-SSDs verhält es sich anders: Sie werden mit einem SATA-Kabel an das Mainboard angeschlossen und erhalten zusätzlich Strom vom Netzteil. Achte darauf, dass Kabel ordentlich verlegt sind, um den Luftstrom im Gehäuse nicht zu behindern. Nach dem Einbau ist die SSD sofort betriebsbereit und kann im BIOS oder Betriebssystem erkannt werden.
+            The process is different for SATA SSDs: They are connected to the motherboard with a SATA cable and receive additional power from the power supply. Make sure the cables are routed neatly so as not to obstruct airflow inside the case. Once installed, the SSD is immediately ready for use and can be detected in the BIOS or operating system.
         </p>
     </article>
 </template>
