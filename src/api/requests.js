@@ -1,4 +1,4 @@
-const backend = "https://apiv1.erion-jasiqi.bbzwinf.ch";
+const backend = "http://localhost:3000"; //"https://apiv1.erion-jasiqi.bbzwinf.ch"
 
 // Generische Request-Funktion.
 async function request(url, options = {}) {
@@ -7,7 +7,11 @@ async function request(url, options = {}) {
     "X-Requested-With": "XMLHttpRequest",
   };
 
-  const response = await fetch(backend + url, { headers, ...options });
+  const response = await fetch(backend + url, {
+    headers,
+    credentials: "include",
+    ...options,
+  });
 
   if (response.ok) {
     return response.json();
@@ -49,20 +53,11 @@ export async function getAccount(userId) {
     const response = await request(`/accounts/${userId}`, {
       method: "GET",
     });
-    return response;
+    return response[0];
   } catch (error) {
-    throw new Error(error);
-  }
-}
-
-export async function test() {
-  try {
-    const response = await request("/tester", {
-      method: "GET",
+    throw new Error("Failed to login", {
+      cause: error,
     });
-    return response;
-  } catch (error) {
-    throw new Error(error);
   }
 }
 

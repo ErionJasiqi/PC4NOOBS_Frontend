@@ -22,9 +22,7 @@ onMounted(async () => {
 
   try {
     isLoading.value = true;
-    console.log(loggedInRaw);
     currentUser.value = await getAccount(loggedInRaw);
-    console.log(currentUser.value);
   } catch (error) {
     console.error(error);
     localStorage.removeItem("loggedInUser");
