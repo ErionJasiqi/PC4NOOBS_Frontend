@@ -12,7 +12,7 @@ const errorMessage = ref("");
 async function login() {
   const user = await loginUser(email.value, password.value);
   if (user) {
-    localStorage.setItem("loggedInUser", user.userId);
+    localStorage.setItem("loggedInUser", user);
     router.push("/account");
   }
 }
