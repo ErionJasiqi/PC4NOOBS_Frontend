@@ -36,7 +36,7 @@ export async function loginUser(email, password) {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
-    return response;
+    return response.userId;
   } catch (error) {
     throw new Error("Failed to login", {
       cause: error,
