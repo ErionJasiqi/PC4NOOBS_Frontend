@@ -121,8 +121,10 @@ function back() {
                     <textarea
                         v-if="hasDesignWishes === 'yes'"
                         v-model="designWishText"
-                        placeholder="Write your wishes here..."
+                        placeholder="Write your wishes here... (min. 10 characters)"
                         @click.stop
+                        @keydown.enter.prevent="designWishText.length >= 10 && next()"
+                        minlength="10"
                     />
                 </button>
                 <button type="button" @click="hasDesignWishes = 'no'; next()">No</button>
