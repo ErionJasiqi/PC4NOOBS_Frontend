@@ -1,4 +1,4 @@
-const backend = "http://localhost:3000"; //"https://apiv1.erion-jasiqi.bbzwinf.ch"
+const backend = process.env.ENDPOINT;
 
 // Generische Request-Funktion.
 async function request(url, options = {}) {
