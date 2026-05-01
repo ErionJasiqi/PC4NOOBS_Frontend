@@ -1,4 +1,4 @@
-const backend = 'https://apiv1.erion-jasiqi.bbzwinf.ch';
+const backend = 'https://apiv1.erion-jasiqi.bbzwinf.ch'; //"http://localhost:3000";
 
 // Generische Request-Funktion.
 async function request(url, options = {}) {

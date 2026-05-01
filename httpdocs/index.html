@@ -6,10 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PC4NOOBS</title>
     <meta name="description" content="PC4NOOBS - simple PC guides and tools for beginners.">
-    <script type="module" crossorigin src="/assets/index-Bf3pXG3_.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CcmokWjd.css">
+    <style>
+      #mobile-warning {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: #0f0f0f;
+        z-index: 99999;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+        font-family: sans-serif;
+        color: #ffffff;
+      }
+      #mobile-warning .icon {
+        font-size: 48px;
+        margin-bottom: 1rem;
+      }
+      #mobile-warning h1 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 0 0 0.75rem;
+        color: #ffffff;
+      }
+      #mobile-warning p {
+        font-size: 1rem;
+        color: #aaaaaa;
+        margin: 0;
+        max-width: 300px;
+        line-height: 1.6;
+      }
+      @media (max-width: 768px) {
+        #mobile-warning {
+          display: flex;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-XnpMcCgN.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BFbE2Vve.css">
   </head>
   <body>
+    <div id="mobile-warning">
+      <div class="icon">🖥️</div>
+      <h1>Please switch to a bigger screen</h1>
+      <p>This website is best experienced on a desktop or laptop.</p>
+    </div>
     <div id="app"></div>
   </body>
 </html>
