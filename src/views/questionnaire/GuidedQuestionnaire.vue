@@ -99,6 +99,7 @@ function back() {
             <div class="budget-card">
                 <div class="budget-label">{{ budgetLabel }}</div>
                 <input type="range" min="500" max="2500" step="100" v-model.number="budget" />
+                <button type="button" class="ok-btn" @click="next">OK</button>
             </div>
         </template>
 
@@ -131,9 +132,6 @@ function back() {
          <!-- Navigation -->
         <div class="nav-bar">
             <button type="button" class="nav-btn" @click="back">← back</button>
-            <button type="button" class="nav-btn" @click="next">
-                {{ step === totalSteps ? 'simulation →' : 'next →' }}
-            </button>
         </div>
     </main>
 </template>
@@ -261,5 +259,22 @@ textarea {
  
 .nav-btn:hover {
   color: var(--color-green);
+}
+
+.ok-btn {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: var(--color-accent, #3b5bdb);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.ok-btn:hover {
+  opacity: 0.85;
 }
 </style>
