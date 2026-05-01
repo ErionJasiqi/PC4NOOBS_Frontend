@@ -1,19 +1,30 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useRoute } from "vue-router";
+import { onMounted } from "vue";
+import { a } from "vue-router/dist/index-Cu9B0wDz.mjs";
 
 const router = useRouter();
+const route = useRoute();
+
+const activity = route.query.activity;
+const budget = Number(route.query.budget);
+const build = route.query.build;
+const design = route.query.design;
 
 // Komponentenliste mit Beispiel-Daten 
 const categories = [
   {
-    id: "hauptplatte",
-    label: "Hauptplatte",
+    id: "motherboard",
+    label: "Motherboard",
     items: [
       {
         id: 1,
         name: "Rog Crosshair X670E Hero",
-        price: "350.-",
+        price: 350,
+        performance: 8,
+        socket: "AM5",
         image: "/src/assets/simulator-example.png",
         description:
           "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
@@ -21,198 +32,224 @@ const categories = [
       {
         id: 2,
         name: "Rog Strix X670E-E Gaming WiFi",
-        price: "400.-",
+        price: 400,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        socket: "AM5",
+        performance:9,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 3,
         name: "TUF Gaming X670E-Plus",
-        price: "200.-",
+        price: 200,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 7,
+        socket: "AM5",
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
     ],
   },
   {
-    id: "prozessoren",
-    label: "Prozessoren",
+    id: "cpu",
+    label: "CPU",
     items: [
       {
         id: 1,
         name: "Intel Core i7-14700K",
-        price: "666.-",
+        price: 350,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance:  10,      
+        socket: "LGA1700",
+        nr_cores: 20,
+        nr_threads: 28,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 2,
         name: "AMD Ryzen 7 7800X3D",
-        price: "398.-",
+        price: 245.25,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance:9,
+        socket: "AM5",
+        nr_cores: 8,
+        nr_threads: 16,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 3,
         name: "AMD Ryzen 5 9600X",
-        price: "430.-",
+        price: 155,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 8,
+        socket: "AM5",
+        nr_cores: 6,
+        nr_threads: 12,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
     ],
   },
   {
     id: "rams",
-    label: "RAMs",
+    label: "RAM",
     items: [
       {
         id: 1,
         name: "Corsair Vengeance",
-        price: "439.-",
+        price: 439,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 8,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 2,
         name: "Kingston Fury Beast",
-        price: "129.-",
+        price: 129,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 7,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 3,
         name: "G.Skill Trident Z5 NEO RGB",
-        price: "547.-",
+        price: 547,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 9,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
     ],
   },
   {
-    id: "gehaeuse",
-    label: "Gehäuse",
+    id: "case",
+    label: "Case",
     items: [
       {
         id: 1,
         name: "Darkflash Tech Darkflash DS900WS computer case",
-        price: "843.-",
+        price: 843,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 6,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 2,
         name: "be quiet! Silent Base 802 Window",
-        price: "132.-",
+        price: 132,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 8,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 3,
         name: "Genesis Natec ARACANTA Midi Tower",
-        price: "495.-",
+        price: 495,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 7,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
     ],
   },
   {
-    id: "psus",
-    label: "PSUs",
+    id: "psu",
+    label: "PSU",
     items: [
       {
         id: 1,
         name: "Corsair PSU SF1000L",
-        price: "187.-",
+        price: 187,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 9,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 2,
         name: "Gigabyte UD850GM PG5",
-        price: "420.-",
+        price: 420,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 7,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 3,
         name: "ASUS TUF Gaming 1000W Gold White",
-        price: "244.-",
+        price: 244,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 8,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
     ],
   },
   {
-    id: "grafikkarten",
-    label: "Grafikkarten",
+    id: "gpu",
+    label: "GPU",
     items: [
       {
         id: 1,
         name: "Gigabyte GeForce RTX 5060 Ti",
-        price: "345.-",
+        price: 444.95,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance:8,
+        max_res: "4K",
+        storage_cap: 8,
+        req_power: 220,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 2,
         name: "ASUS Dual GeForce RTX 5060 Ti OC",
-        price: "242.-",
+        price: 242,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance:7,
+        max_res: "4K",
+        storage_cap: 8,
+        req_power: 220,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 3,
         name: "GeForce RTX 5070 Ti Aero OC",
-        price: "133.-",
+        price: 133,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance:9,
+        max_res: "4K",
+        storage_cap: 8,
+        req_power: 220,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
     ],
   },
   {
-    id: "kuehler",
-    label: "Kühler",
+    id: "cooler",
+    label: "Cooler",
     items: [
       {
         id: 1,
         name: "be quiet! Pure Rock 3",
-        price: "165.-",
+        price: 26.50,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 7,
+        amount_fans: 1,
+        airflow: 101.2,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 2,
-        name: "Peerless Assasin 120 SE",
-        price: "254.-",
+        name: "Peerless Assassin 120 SE",
+        price: 47.90,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 9,
+        amount_fans: 2,
+        airflow: 112.42,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
       {
         id: 3,
         name: "Arctic Freezer 36 A-RGB",
-        price: "354.-",
+        price: 30.40,
         image: "/src/assets/simulator-example.png",
-        description:
-          "Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
+        performance: 8,
+        amount_fans: 2,
+        airflow: 120.5,
+        description:"Wir haben diese Hauptplatine für Sie ausgewählt, da sie für ihren vergleichsweise niedrigen Preis eine sehr gute Leistung bietet.",
       },
     ],
   },
@@ -237,6 +274,78 @@ function selectComponent(item) {
   // Komponente speichern / weiterverarbeiten – hier bei Bedarf erweitern
   selectedItem.value = null;
 }
+
+function scoreItem(item, categoryId) {
+  let score = 0;
+
+  const activityWeights = {
+    gaming: 1.5,
+    "film-production": 1.7,
+    "graphic-design": 1.3,
+    work: 1.0,
+  };
+
+  score += item.performance * (activityWeights[activity] || 1);
+
+
+  if (item.price > budget / categories.length) {
+    score -= 5;
+  }
+
+  score += item.performance / item.price * 100;
+
+  return score;
+}
+
+function isCompatible(cpu, motherboard) {
+  return cpu.socket === motherboard.socket;
+}
+
+
+function generateBuild() {
+  const selected = {};
+
+
+  const cpuCategory = categories.find(c => c.id === "cpu");
+
+  selected.cpu = [...cpuCategory.items]
+    .sort((a, b) => scoreItem(b, "cpu") - scoreItem(a, "cpu"))[0];
+
+
+  const motherboardCategory = categories.find(c => c.id === "motherboard");
+
+  selected.motherboard = motherboardCategory.items
+    .filter(m => isCompatible(selected.cpu, m))
+    .sort((a, b) => scoreItem(b, "motherboard") - scoreItem(a, "motherboard"))[0];
+
+    
+  categories.forEach(cat => {
+    if (selected[cat.id]) return;
+
+    selected[cat.id] = [...cat.items]
+      .sort((a, b) => scoreItem(b, cat.id) - scoreItem(a, cat.id))[0];
+  });
+
+  return selected;
+}
+
+const selectedComponents = ref({});
+
+
+
+
+onMounted(() => {
+  selectedComponents.value = generateBuild();
+});
+
+if (activity === "gaming" && categoryId === "gpu") {
+  score += item.performance * 2;
+}
+
+if (activity === "work" && categoryId === "gpu") {
+  score -= 2;
+}
+
 </script>
 
 <template>
@@ -302,13 +411,11 @@ function selectComponent(item) {
           <!-- 3 Karten nebeneinander (wie in den Screenshots) -->
           <div class="modal-cards">
             <div
-              v-for="item in categories.find(
-                (c) => c.items.some((i) => i.id === selectedItem.id && c.items.includes(selectedItem))
-              )?.items ?? [selectedItem]"
-              :key="item.id"
-              class="modal-card"
-              :class="{ 'modal-card--active': item.id === selectedItem.id }"
-            >
+            v-for="item in cat.items"
+            :key="item.id"
+            class="dropdown-item"
+            :class="{ selected: selectedComponents[cat.id]?.id === item.id }"
+            @click="openDetail(item)">
               <img :src="item.image" :alt="item.name" class="modal-img" />
               <h3 class="modal-name">{{ item.name }}</h3>
               <p class="modal-desc">{{ item.description }}</p>
@@ -335,6 +442,11 @@ function selectComponent(item) {
   background: #1a1f2e;
   color: #e0e6f0;
   position: relative;
+}
+
+.selected {
+  border-left: 3px solid #39d353;
+  background: #2e3850;
 }
 
 .sidebar {
