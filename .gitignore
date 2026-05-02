@@ -40,3 +40,6 @@ __screenshots__/
 
 # 3DModels
 *.glb
+
+# dotenv environment variables file
+.env
