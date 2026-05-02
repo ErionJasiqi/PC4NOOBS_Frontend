@@ -1,4 +1,4 @@
-const backend = "https://apiv1.erion-jasiqi.bbzwinf.ch";//process.env.ENDPOINT;
+const backend = import.meta.env.VITE_ENDPOINT || "https://apiv1.erion-jasiqi.bbzwinf.ch";
 
 // Generische Request-Funktion.
 async function request(url, options = {}) {
@@ -98,5 +98,13 @@ export async function getRecommendations(activity, budget) {
   if (activity) params.set("activity", activity);
   if (budget) params.set("budget", String(budget));
   const response = await request(`/recommendations?${params}`, { method: "GET" });
+  return response;
+}
+
+export async function createPaymentIntent(amountChf) {
+  const response = await request("/payment/create-intent", {
+    method: "POST",
+    body: JSON.stringify({ amountChf }),
+  });
   return response;
 }

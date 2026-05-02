@@ -296,7 +296,7 @@ onMounted(async () => {
         </div>
       </div>
 
-      <button class="purchase-btn" @click="router.push('/payment')">
+      <button class="purchase-btn" @click="router.push({ name: 'payment', query: { total: totalCost } })">
         Finalize PC / Purchase
       </button>
     </aside>
