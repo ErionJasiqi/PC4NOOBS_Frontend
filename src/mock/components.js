@@ -7,7 +7,7 @@ export const mockCategories = [
         id: 1,
         name: "Rog Crosshair X670E Hero",
         price: 350,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Rog_Crosshair_X670E_Hero.png",
         description: "High-performance X670E board with excellent VRM for Ryzen 7000. Features robust power delivery, extensive connectivity, and premium audio for enthusiast-level builds.",
         specs: [
           { label: "Socket", value: "AM5" },
@@ -24,7 +24,7 @@ export const mockCategories = [
         id: 2,
         name: "Rog Strix X670E-E Gaming WiFi",
         price: 400,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Rog_Strix_X670E-E_Gaming_WiFi.png",
         description: "Premium AM5 board with WiFi 6E and top-tier audio codec. Combines high-end VRM with comprehensive I/O and PCIe 5.0 support for next-gen storage and GPUs.",
         specs: [
           { label: "Socket", value: "AM5" },
@@ -41,7 +41,7 @@ export const mockCategories = [
         id: 3,
         name: "TUF Gaming X670E-Plus",
         price: 200,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/TUF_Gaming_X670E-Plus.png",
         description: "Solid AM5 board offering great value for mid-range builds. Military-grade components ensure long-term reliability without sacrificing performance.",
         specs: [
           { label: "Socket", value: "AM5" },
@@ -64,7 +64,7 @@ export const mockCategories = [
         id: 1,
         name: "Intel Core i7-14700K",
         price: 420,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Intel_Core_i7-14700K.png",
         description: "Powerful 20-core Intel CPU ideal for gaming and content creation. Hybrid architecture combines Performance and Efficient cores for outstanding multi-threaded throughput.",
         specs: [
           { label: "Cores", value: "20 (8P + 12E)" },
@@ -81,7 +81,7 @@ export const mockCategories = [
         id: 2,
         name: "AMD Ryzen 7 7800X3D",
         price: 380,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/AMD_Ryzen_7_7800X3D.png",
         description: "Best gaming CPU with revolutionary 3D V-Cache technology. The extra 96 MB stacked cache dramatically reduces latency in games, delivering top-tier frame rates.",
         specs: [
           { label: "Cores", value: "8" },
@@ -98,7 +98,7 @@ export const mockCategories = [
         id: 3,
         name: "AMD Ryzen 5 9600X",
         price: 250,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/AMD_Ryzen_5_9600X.png",
         description: "Efficient mid-range CPU with excellent single-core performance. Built on Zen 5 architecture for improved IPC and lower power consumption compared to previous generations.",
         specs: [
           { label: "Cores", value: "6" },
@@ -121,7 +121,7 @@ export const mockCategories = [
         id: 1,
         name: "Corsair Vengeance DDR5-6000",
         price: 180,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Corsair_Vengeance_DDR5-6000.png",
         description: "Fast DDR5 kit optimized for AMD Ryzen 7000 platforms. Intel XMP 3.0 and AMD EXPO profiles enable one-click overclocking to rated speeds.",
         specs: [
           { label: "Capacity", value: "32 GB (2×16 GB)" },
@@ -136,7 +136,7 @@ export const mockCategories = [
         id: 2,
         name: "Kingston Fury Beast DDR5",
         price: 130,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Kingston_Fury_Beast_DDR5.png",
         description: "Reliable DDR5 RAM with solid performance at a great price. Low-profile heatspreader fits most air coolers and ensures broad platform compatibility.",
         specs: [
           { label: "Capacity", value: "32 GB (2×16 GB)" },
@@ -151,7 +151,7 @@ export const mockCategories = [
         id: 3,
         name: "G.Skill Trident Z5 NEO RGB",
         price: 220,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/GSkill_Trident_Z5_NEO_RGB.png",
         description: "Premium RGB DDR5 kit with high speeds and stylish design. Optimized for AMD platforms with EXPO support for effortless tuning to rated frequency.",
         specs: [
           { label: "Capacity", value: "32 GB (2×16 GB)" },
@@ -172,7 +172,7 @@ export const mockCategories = [
         id: 1,
         name: "Darkflash DS900WS",
         price: 120,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Darkflash_DS900WS.png",
         description: "Full-tower case with excellent airflow and spacious interior. Panoramic tempered glass panels showcase your build while mesh front and top panels maximize ventilation.",
         specs: [
           { label: "Form Factor", value: "Full Tower" },
@@ -188,7 +188,7 @@ export const mockCategories = [
         id: 2,
         name: "be quiet! Silent Base 802",
         price: 140,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/be_quiet_Silent_Base_802.png",
         description: "Ultra-quiet mid-tower with premium sound dampening panels. Extensive noise-reduction material and isolated drive mounts make this the ideal case for silent systems.",
         specs: [
           { label: "Form Factor", value: "Mid Tower" },
@@ -204,7 +204,7 @@ export const mockCategories = [
         id: 3,
         name: "Genesis Natec ARACANTA",
         price: 80,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Genesis_Natec_ARACANTA.png",
         description: "Compact and affordable mid-tower with good cable management. Tempered glass side panel and RGB strip offer visual flair without inflating the price.",
         specs: [
           { label: "Form Factor", value: "Mid Tower" },
@@ -226,7 +226,7 @@ export const mockCategories = [
         id: 1,
         name: "Corsair SF1000L",
         price: 190,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Corsair_SF1000L.png",
         description: "Compact SFX PSU with 1000W output and 80+ Gold rating. Ideal for small-form-factor builds that demand high wattage without sacrificing efficiency.",
         specs: [
           { label: "Wattage", value: "1000 W" },
@@ -242,7 +242,7 @@ export const mockCategories = [
         id: 2,
         name: "Gigabyte UD850GM PG5",
         price: 120,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Gigabyte_UD850GM_PG5.png",
         description: "Reliable 850W ATX PSU with full PCIe 5.0 connector support. Japanese capacitors and 10-year warranty ensure long-lasting stable power delivery.",
         specs: [
           { label: "Wattage", value: "850 W" },
@@ -258,7 +258,7 @@ export const mockCategories = [
         id: 3,
         name: "ASUS TUF Gaming 1000W Gold",
         price: 160,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/ASUS_TUF_Gaming_1000W_Gold.png",
         description: "Military-grade 1000W PSU with Japanese capacitors. Features a semi-fanless mode for silent operation under light load and comprehensive protection circuitry.",
         specs: [
           { label: "Wattage", value: "1000 W" },
@@ -280,7 +280,7 @@ export const mockCategories = [
         id: 1,
         name: "Gigabyte GeForce RTX 5060 Ti",
         price: 470,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Gigabyte_GeForce_RTX_5060_Ti.png",
         description: "Next-gen NVIDIA GPU with DLSS 4 and full ray tracing support. Blackwell architecture brings multi-frame generation for dramatically higher frame rates in supported titles.",
         specs: [
           { label: "Memory", value: "16 GB GDDR7" },
@@ -296,7 +296,7 @@ export const mockCategories = [
         id: 2,
         name: "ASUS Dual RTX 5060 Ti OC",
         price: 450,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/ASUS_Dual_RTX_5060_Ti_OC.png",
         description: "Overclocked RTX 5060 Ti with quiet dual-fan Axial-tech cooling. Factory overclock and enhanced power delivery deliver slightly better performance out of the box.",
         specs: [
           { label: "Memory", value: "16 GB GDDR7" },
@@ -312,7 +312,7 @@ export const mockCategories = [
         id: 3,
         name: "GeForce RTX 5070 Ti Aero OC",
         price: 750,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/GeForce_RTX_5070_Ti_Aero_OC.png",
         description: "High-end GPU for 4K gaming and AI-accelerated workloads. Larger shader count and higher TDP unlocks significantly more rasterization and ray tracing performance.",
         specs: [
           { label: "Memory", value: "16 GB GDDR7" },
@@ -334,7 +334,7 @@ export const mockCategories = [
         id: 1,
         name: "be quiet! Pure Rock 3",
         price: 50,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/be_quiet_Pure_Rock_3.png",
         description: "Silent and efficient air cooler suited for mid-range builds. Single tower design with optimized heatpipes and included Pure Wings fan keeps temperatures in check quietly.",
         specs: [
           { label: "Type", value: "Air — Single Tower" },
@@ -350,7 +350,7 @@ export const mockCategories = [
         id: 2,
         name: "Thermalright Peerless Assassin 120 SE",
         price: 40,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Thermalright_Peerless_Assassin_120_SE.png",
         description: "Award-winning dual-tower cooler with excellent price-to-performance. Symmetric design with two included fans delivers desktop-class cooling at a budget-friendly price.",
         specs: [
           { label: "Type", value: "Air — Dual Tower" },
@@ -366,7 +366,7 @@ export const mockCategories = [
         id: 3,
         name: "Arctic Freezer 36 A-RGB",
         price: 60,
-        image: "/src/assets/simulator-example.png",
+        image: "/src/assets/parts/Arctic_Freezer_36_A-RGB.png",
         description: "Dual-fan air cooler with A-RGB lighting and strong thermal output. Push-pull fan configuration and direct-touch heatpipes maximize heat dissipation efficiency.",
         specs: [
           { label: "Type", value: "Air — Single Tower" },
