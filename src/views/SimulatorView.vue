@@ -1,7 +1,8 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { getComponents, getRecommendations } from "@/api/requests.js";
+import { mockCategories } from "@/mock/components.js";
 
 const router = useRouter();
 const route = useRoute();
@@ -162,6 +163,10 @@ function removeComponent(catId) {
   selectedComponents.value = next;
 }
 
+watch(selectedComponents, (val) => {
+  localStorage.setItem("pc4noobs_build", JSON.stringify(val));
+}, { deep: true });
+
 onMounted(async () => {
   let cats = mockCategories;
   let recs = {};
@@ -189,11 +194,35 @@ onMounted(async () => {
   categories.value = cats;
   recommendedIds.value = recs;
 
-  for (const cat of cats) {
-    const recId = recs[cat.id];
-    if (recId) {
-      const item = cat.items.find((i) => i.id === recId);
-      if (item) selectedComponents.value[cat.id] = item;
+  // Restore saved build from localStorage
+  const saved = localStorage.getItem("pc4noobs_build");
+  if (saved) {
+    try {
+      selectedComponents.value = JSON.parse(saved);
+    } catch {
+      // corrupt storage — fall back to recommendations below
+    }
+  }
+
+  // If nothing was restored, auto-select recommended components
+  if (Object.keys(selectedComponents.value).length === 0) {
+    for (const cat of cats) {
+      const recId = recs[cat.id];
+      if (recId) {
+        const item = cat.items.find((i) => i.id === recId);
+        if (item) selectedComponents.value[cat.id] = item;
+      }
+    }
+  }
+
+  // Preselect a component coming from the detail view ("Add to Build")
+  const preselect = route.query.preselect;
+  if (preselect) {
+    const [catId, itmIdStr] = preselect.split(":");
+    const cat = cats.find((c) => c.id === catId);
+    if (cat) {
+      const item = cat.items.find((i) => i.id === Number(itmIdStr));
+      if (item) selectedComponents.value = { ...selectedComponents.value, [catId]: item };
     }
   }
 });
@@ -253,6 +282,13 @@ onMounted(async () => {
                 </div>
                 <div class="item-right">
                   <span class="item-price">CHF {{ entry.item.price }}</span>
+                  <button
+                    class="item-details-btn"
+                    title="View details"
+                    @click.stop="router.push({ name: 'component-detail', params: { categoryId: cat.id, itemId: entry.item.id } })"
+                  >
+                    ↗
+                  </button>
                   <span v-if="isSelected(cat.id, entry.item.id)" class="selected-check">✓</span>
                 </div>
               </div>
@@ -261,6 +297,22 @@ onMounted(async () => {
         </transition>
       </div>
     </section>
+
+    <iframe
+      src="https://play.unity.com/en/games/ea4c579b-5cb4-4cba-85e5-13038d032bac/simulator"
+      width="960"
+      height="600"
+      frameborder="0"
+      allowfullscreen
+    >
+    </iframe>
+    <!--
+    <main class="simulator-main">
+      <div class="pc-image-wrapper">
+        <img src="/src/assets/pc-homescreen.png" alt="PC Preview" />
+      </div>
+    </main>
+    -->
 
     <!-- Right: Build summary -->
     <aside class="build-panel">
@@ -528,6 +580,23 @@ onMounted(async () => {
   font-weight: 700;
   color: #c8d0e0;
   white-space: nowrap;
+}
+
+.item-details-btn {
+  background: none;
+  border: 1px solid #2a3a55;
+  color: #6a88b8;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  padding: 1px 5px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  line-height: 1.4;
+}
+
+.item-details-btn:hover {
+  border-color: #39d353;
+  color: #39d353;
 }
 
 .selected-check {
