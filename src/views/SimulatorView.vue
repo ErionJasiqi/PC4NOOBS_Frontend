@@ -285,24 +285,32 @@ function selectComponent(item) {
     </aside>
 
     <!-- ── Main area (PC image) ─────────────────────────────────────── -->
+    <iframe
+      src="https://play.unity.com/en/games/ea4c579b-5cb4-4cba-85e5-13038d032bac/simulator"
+      width="960"
+      height="600"
+      frameborder="0"
+      allowfullscreen
+    >
+    </iframe>
+    <!--
     <main class="simulator-main">
       <div class="pc-image-wrapper">
         <img src="/src/assets/pc-homescreen.png" alt="PC Preview" />
       </div>
     </main>
-
+    -->
     <transition name="fade">
-      <div
-        v-if="selectedItem"
-        class="modal-overlay"
-        @click.self="closeDetail"
-      >
+      <div v-if="selectedItem" class="modal-overlay" @click.self="closeDetail">
         <div class="modal">
           <!-- 3 cards side by side (as shown in the screenshots) -->
           <div class="modal-cards">
             <div
-              v-for="item in categories.find(
-                (c) => c.items.some((i) => i.id === selectedItem.id && c.items.includes(selectedItem))
+              v-for="item in categories.find((c) =>
+                c.items.some(
+                  (i) =>
+                    i.id === selectedItem.id && c.items.includes(selectedItem),
+                ),
               )?.items ?? [selectedItem]"
               :key="item.id"
               class="modal-card"
@@ -312,10 +320,18 @@ function selectComponent(item) {
               <h3 class="modal-name">{{ item.name }}</h3>
               <p class="modal-desc">{{ item.description }}</p>
               <div class="modal-actions">
-                <button type="button" class="btn-secondary" @click="closeDetail">
+                <button
+                  type="button"
+                  class="btn-secondary"
+                  @click="closeDetail"
+                >
                   Change selection
                 </button>
-                <button type="button" class="btn-primary" @click="selectComponent(item)">
+                <button
+                  type="button"
+                  class="btn-primary"
+                  @click="selectComponent(item)"
+                >
                   Select component
                 </button>
               </div>
@@ -367,7 +383,9 @@ function selectComponent(item) {
   font-size: 0.9rem;
   color: #c8d0e0;
   cursor: pointer;
-  transition: color 0.15s, background 0.15s;
+  transition:
+    color 0.15s,
+    background 0.15s;
   border-left: 3px solid transparent;
 }
 
@@ -461,7 +479,9 @@ function selectComponent(item) {
   cursor: pointer;
   text-align: center;
   line-height: 1.3;
-  transition: background 0.15s, transform 0.1s;
+  transition:
+    background 0.15s,
+    transform 0.1s;
 }
 
 .payment-btn:hover {
@@ -572,7 +592,9 @@ function selectComponent(item) {
   font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
+  transition:
+    background 0.15s,
+    transform 0.1s;
 }
 
 .btn-primary {
@@ -595,7 +617,9 @@ function selectComponent(item) {
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: max-height 0.22s ease, opacity 0.18s ease;
+  transition:
+    max-height 0.22s ease,
+    opacity 0.18s ease;
   max-height: 400px;
   overflow: hidden;
 }
