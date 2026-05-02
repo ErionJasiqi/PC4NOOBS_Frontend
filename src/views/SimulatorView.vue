@@ -1,7 +1,8 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { getComponents, getRecommendations } from "@/api/requests.js";
+import { mockCategories } from "@/mock/components.js";
 
 const router = useRouter();
 const route = useRoute();
@@ -15,72 +16,6 @@ const activityLabels = {
   work: "Work",
   "film-production": "Film Production",
 };
-
-const mockCategories = [
-  {
-    id: "motherboard",
-    label: "Motherboard",
-    items: [
-      { id: 1, name: "Rog Crosshair X670E Hero", price: 350, image: "/src/assets/simulator-example.png", description: "High-performance X670E board with excellent VRM for Ryzen 7000." },
-      { id: 2, name: "Rog Strix X670E-E Gaming WiFi", price: 400, image: "/src/assets/simulator-example.png", description: "Premium AM5 board with WiFi 6E and top-tier audio codec." },
-      { id: 3, name: "TUF Gaming X670E-Plus", price: 200, image: "/src/assets/simulator-example.png", description: "Solid AM5 board offering great value for mid-range builds." },
-    ],
-  },
-  {
-    id: "processor",
-    label: "Processor",
-    items: [
-      { id: 1, name: "Intel Core i7-14700K", price: 420, image: "/src/assets/simulator-example.png", description: "Powerful 20-core Intel CPU ideal for gaming and content creation." },
-      { id: 2, name: "AMD Ryzen 7 7800X3D", price: 380, image: "/src/assets/simulator-example.png", description: "Best gaming CPU with revolutionary 3D V-Cache technology." },
-      { id: 3, name: "AMD Ryzen 5 9600X", price: 250, image: "/src/assets/simulator-example.png", description: "Efficient mid-range CPU with excellent single-core performance." },
-    ],
-  },
-  {
-    id: "ram",
-    label: "RAM",
-    items: [
-      { id: 1, name: "Corsair Vengeance DDR5-6000", price: 180, image: "/src/assets/simulator-example.png", description: "Fast DDR5 kit optimized for AMD Ryzen 7000 platforms." },
-      { id: 2, name: "Kingston Fury Beast DDR5", price: 130, image: "/src/assets/simulator-example.png", description: "Reliable DDR5 RAM with solid performance at a great price." },
-      { id: 3, name: "G.Skill Trident Z5 NEO RGB", price: 220, image: "/src/assets/simulator-example.png", description: "Premium RGB DDR5 kit with high speeds and stylish design." },
-    ],
-  },
-  {
-    id: "case",
-    label: "Case",
-    items: [
-      { id: 1, name: "Darkflash DS900WS", price: 120, image: "/src/assets/simulator-example.png", description: "Full-tower case with excellent airflow and spacious interior." },
-      { id: 2, name: "be quiet! Silent Base 802", price: 140, image: "/src/assets/simulator-example.png", description: "Ultra-quiet mid-tower with premium sound dampening panels." },
-      { id: 3, name: "Genesis Natec ARACANTA", price: 80, image: "/src/assets/simulator-example.png", description: "Compact and affordable mid-tower with good cable management." },
-    ],
-  },
-  {
-    id: "psu",
-    label: "PSU",
-    items: [
-      { id: 1, name: "Corsair SF1000L", price: 190, image: "/src/assets/simulator-example.png", description: "Compact SFX PSU with 1000W output and 80+ Gold rating." },
-      { id: 2, name: "Gigabyte UD850GM PG5", price: 120, image: "/src/assets/simulator-example.png", description: "Reliable 850W ATX PSU with full PCIe 5.0 connector support." },
-      { id: 3, name: "ASUS TUF Gaming 1000W Gold", price: 160, image: "/src/assets/simulator-example.png", description: "Military-grade 1000W PSU with Japanese capacitors." },
-    ],
-  },
-  {
-    id: "gpu",
-    label: "Graphics Card",
-    items: [
-      { id: 1, name: "Gigabyte GeForce RTX 5060 Ti", price: 470, image: "/src/assets/simulator-example.png", description: "Next-gen NVIDIA GPU with DLSS 4 and full ray tracing support." },
-      { id: 2, name: "ASUS Dual RTX 5060 Ti OC", price: 450, image: "/src/assets/simulator-example.png", description: "Overclocked RTX 5060 Ti with quiet dual-fan Axial-tech cooling." },
-      { id: 3, name: "GeForce RTX 5070 Ti Aero OC", price: 750, image: "/src/assets/simulator-example.png", description: "High-end GPU for 4K gaming and AI-accelerated workloads." },
-    ],
-  },
-  {
-    id: "cooler",
-    label: "Cooler",
-    items: [
-      { id: 1, name: "be quiet! Pure Rock 3", price: 50, image: "/src/assets/simulator-example.png", description: "Silent and efficient air cooler suited for mid-range builds." },
-      { id: 2, name: "Thermalright Peerless Assassin 120 SE", price: 40, image: "/src/assets/simulator-example.png", description: "Award-winning dual-tower cooler with excellent price-to-performance." },
-      { id: 3, name: "Arctic Freezer 36 A-RGB", price: 60, image: "/src/assets/simulator-example.png", description: "Dual-fan air cooler with A-RGB lighting and strong thermal output." },
-    ],
-  },
-];
 
 function computeLocalRecommendations(cats, budgetVal) {
   if (!budgetVal) return {};
@@ -162,6 +97,10 @@ function removeComponent(catId) {
   selectedComponents.value = next;
 }
 
+watch(selectedComponents, (val) => {
+  localStorage.setItem("pc4noobs_build", JSON.stringify(val));
+}, { deep: true });
+
 onMounted(async () => {
   let cats = mockCategories;
   let recs = {};
@@ -189,11 +128,35 @@ onMounted(async () => {
   categories.value = cats;
   recommendedIds.value = recs;
 
-  for (const cat of cats) {
-    const recId = recs[cat.id];
-    if (recId) {
-      const item = cat.items.find((i) => i.id === recId);
-      if (item) selectedComponents.value[cat.id] = item;
+  // Restore saved build from localStorage
+  const saved = localStorage.getItem("pc4noobs_build");
+  if (saved) {
+    try {
+      selectedComponents.value = JSON.parse(saved);
+    } catch {
+      // corrupt storage — fall back to recommendations below
+    }
+  }
+
+  // If nothing was restored, auto-select recommended components
+  if (Object.keys(selectedComponents.value).length === 0) {
+    for (const cat of cats) {
+      const recId = recs[cat.id];
+      if (recId) {
+        const item = cat.items.find((i) => i.id === recId);
+        if (item) selectedComponents.value[cat.id] = item;
+      }
+    }
+  }
+
+  // Preselect a component coming from the detail view ("Add to Build")
+  const preselect = route.query.preselect;
+  if (preselect) {
+    const [catId, itmIdStr] = preselect.split(":");
+    const cat = cats.find((c) => c.id === catId);
+    if (cat) {
+      const item = cat.items.find((i) => i.id === Number(itmIdStr));
+      if (item) selectedComponents.value = { ...selectedComponents.value, [catId]: item };
     }
   }
 });
@@ -253,6 +216,13 @@ onMounted(async () => {
                 </div>
                 <div class="item-right">
                   <span class="item-price">CHF {{ entry.item.price }}</span>
+                  <button
+                    class="item-details-btn"
+                    title="View details"
+                    @click.stop="router.push({ name: 'component-detail', params: { categoryId: cat.id, itemId: entry.item.id } })"
+                  >
+                    ↗
+                  </button>
                   <span v-if="isSelected(cat.id, entry.item.id)" class="selected-check">✓</span>
                 </div>
               </div>
@@ -544,6 +514,23 @@ onMounted(async () => {
   font-weight: 700;
   color: #c8d0e0;
   white-space: nowrap;
+}
+
+.item-details-btn {
+  background: none;
+  border: 1px solid #2a3a55;
+  color: #6a88b8;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  padding: 1px 5px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  line-height: 1.4;
+}
+
+.item-details-btn:hover {
+  border-color: #39d353;
+  color: #39d353;
 }
 
 .selected-check {
