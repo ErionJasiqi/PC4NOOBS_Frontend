@@ -16,6 +16,7 @@ async function login() {
     router.push("/account");
   }
 }
+
 </script>
 
 <template>
@@ -45,7 +46,9 @@ async function login() {
 
       <p class="social-label">Continue with</p>
       <div class="social-icons">
-        <img src="/src/assets/google.png" alt="Google" />
+        <a href='http://localhost:3000/oauth/google'>
+          <img src="/src/assets/google.png" alt="Google" />
+        </a>
         <img src="/src/assets/apple.png" alt="Apple" />
         <img src="/src/assets/microsoft.png" alt="Microsoft" />
         <img src="/src/assets/facebook.png" alt="Facebook" />
