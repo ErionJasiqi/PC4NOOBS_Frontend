@@ -1,4 +1,4 @@
-const backend = import.meta.env.VITE_ENDPOINT || "https://apiv1.erion-jasiqi.bbzwinf.ch";
+const backend = import.meta.env.VITE_ENDPOINT;
 
 // Generische Request-Funktion.
 async function request(url, options = {}) {
